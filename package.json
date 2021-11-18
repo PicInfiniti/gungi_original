@@ -1,0 +1,23 @@
+{
+  "name": "gungi",
+  "version": "1.0.0",
+  "description": "Hunter-x-Hunter",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/PicInfiniti/gungi.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/PicInfiniti/gungi/issues"
+  },
+  "homepage": "https://github.com/PicInfiniti/gungi#readme",
+  "dependencies": {
+    "gungi.js": "^1.0.20"
+  }
+}
