@@ -1,23 +1,17 @@
 {
   "name": "gungi",
-  "version": "1.0.0",
-  "description": "Hunter-x-Hunter",
-  "main": "index.js",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/PicInfiniti/gungi.git"
+  "devDependencies": {
+    "vite": "^3.0.0"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/PicInfiniti/gungi/issues"
-  },
-  "homepage": "https://github.com/PicInfiniti/gungi#readme",
   "dependencies": {
-    "gungi.js": "^1.0.20"
+    "jquery": "^3.6.0"
   }
 }
