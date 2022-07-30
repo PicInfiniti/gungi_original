@@ -2,18 +2,35 @@
 import $ from "jquery"
 
 // libraries -------------------------------------
-import './assets/css/main.css'
 
-import "./assets/js/gungi/lib/utils/constants.js"
-import "./assets/js/gungi/lib/utils/helper.js"
-import "./assets/js/gungi/lib/utils/move_gen.js"
+// sass ++++++++++++++++++++++++++++++++++++++++++
+import './assets/sass/style.sass'
+// import './assets/sass/main.sass'
 
-import "./assets/js/gungi/lib/utils/stockpile_move_gen.js"
-import "./assets/js/gungi/lodash.js"
-import "./assets/js/gungi/lib/interfaces/igungi.js"
-import "./assets/js/gungi/lib/gungi.js"
+// sass ------------------------------------------
 
-import "./assets/js/gungi/setup.js"
-import "./assets/js/gungi/utils.js"
-import "./assets/js/gungi/Interactions.js"
+// app +++++++++++++++++++++++++++++++++++++++++++
+// import './assets/js/app'
+
+// app -------------------------------------------
+
+// setup +++++++++++++++++++++++++++++++++++++++++
+// import {
+//   settings
+// } from './assets/js/init'
+
+// setup -----------------------------------------
+
+for (let i = 0; i < 9; i++) {
+  for (let j = 0; j < 9; j++) {
+    $('#fake').append("<label class='fake boarder' type='text'>0</label>")
+  }
+}
+
+// for (let i = 0; i < 9; i++) {
+//   for (let j = 0; j < 9; j++) {
+//     $('#board').append(`<label class='box boarder' type='text' id='b-${i}-${j}' name='${i}-${j}'>${i}${j}</label>`)
+//   }
+// }
+
 
