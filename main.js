@@ -20,7 +20,7 @@ import './assets/sass/style.sass'
 // } from './assets/js/init'
 
 // setup -----------------------------------------
-
+document.addEventListener('contextmenu', event => event.preventDefault());
 for (let i = 0; i < 9; i++) {
   for (let j = 0; j < 9; j++) {
     $('#fake').append("<label class='fake boarder' type='text'>0</label>")
