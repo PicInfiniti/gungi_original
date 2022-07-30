@@ -27,10 +27,10 @@ for (let i = 0; i < 9; i++) {
   }
 }
 
-// for (let i = 0; i < 9; i++) {
-//   for (let j = 0; j < 9; j++) {
-//     $('#board').append(`<label class='box boarder' type='text' id='b-${i}-${j}' name='${i}-${j}'>${i}${j}</label>`)
-//   }
-// }
+for (let i = 0; i < 9; i++) {
+  for (let j = 0; j < 9; j++) {
+    $('#board').append(`<label class='box' type='text' id='b-${i}-${j}' name='${i}-${j}'>${i}${j}</label>`)
+  }
+}
 
 
