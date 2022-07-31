@@ -28,7 +28,7 @@
     </div>
 
 
-    <div class="boarder info">
+    <div class="info">
       <div class="boarder-bottom" id="status">
         <h3 id="PHASE">Draft Phase</h3>
         <div class="status">
@@ -62,23 +62,62 @@
       </div>
       
 
-      <div class="boarder-bottom" id="status">
-        <h3 id="PHASE">Draft Phase</h3>
-        <div class="status">
-          <span id="PB">
-            <label type="text" name="帥">帥</label>
-          </span>
-          <span id="ReadyButton">
-            <button type="button">Ready</button>
-          </span>
-          <span id="PW">
-            <label type="text" name="帥">帥</label>
-          </span>
-        </div>
+
+      <div class="boarder-bottom" id="black_stockpile">
+        <h3>Black Stockpile</h3>
+        <span name="pile">
+          <label class="stockpile boarder" type="text" id="bs-帥" name="帥" dcr="marshal">帥</label>
+          <label class="stockpile boarder" type="text" id="bs-兵" name="兵" dcr="pawn">兵</label>
+          <label class="stockpile boarder" type="text" id="bs-忍" name="忍" dcr="spy">忍</label>
+          <label class="stockpile boarder" type="text" id="bs-砲" name="砲" dcr="cannon">砲</label>
+          <label class="stockpile boarder" type="text" id="bs-砦" name="砦" dcr="fortress">砦</label>
+          <label class="stockpile boarder" type="text" id="bs-侍" name="侍" dcr="samurai">侍</label>
+          <label class="stockpile boarder" type="text" id="bs-謀" name="謀" dcr="captain">謀</label>
+          <label class="stockpile boarder" type="text" id="bs-筒" name="筒" dcr="musketeer">筒</label>
+          <label class="stockpile boarder" type="text" id="bs-馬" name="馬" dcr="knight">馬</label>
+          <label class="stockpile boarder" type="text" id="bs-弓" name="弓" dcr="archer">弓</label>
+          <label class="stockpile boarder" type="text" id="bs-大" name="大" dcr="general">大</label>
+          <label class="stockpile boarder" type="text" id="bs-中" name="中" dcr="lieutenant">中</label>
+          <label class="stockpile boarder" type="text" id="bs-小" name="小" dcr="minor general">小</label>
+        </span>
+        <span id='b-army' class="army">
+          <label>army size:</label>
+          <span id='as-b'>0</span>
+        </span>
       </div>
+
+      <div class="boarder-bottom" id="white_stockpile">
+        <h3>White Stockpile</h3>
+        <span name="pile">
+          <label class="stockpile boarder" type="text" id="bs-帥" name="帥" dcr="marshal">帥</label>
+          <label class="stockpile boarder" type="text" id="bs-兵" name="兵" dcr="pawn">兵</label>
+          <label class="stockpile boarder" type="text" id="bs-忍" name="忍" dcr="spy">忍</label>
+          <label class="stockpile boarder" type="text" id="bs-砲" name="砲" dcr="cannon">砲</label>
+          <label class="stockpile boarder" type="text" id="bs-砦" name="砦" dcr="fortress">砦</label>
+          <label class="stockpile boarder" type="text" id="bs-侍" name="侍" dcr="samurai">侍</label>
+          <label class="stockpile boarder" type="text" id="bs-謀" name="謀" dcr="captain">謀</label>
+          <label class="stockpile boarder" type="text" id="bs-筒" name="筒" dcr="musketeer">筒</label>
+          <label class="stockpile boarder" type="text" id="bs-馬" name="馬" dcr="knight">馬</label>
+          <label class="stockpile boarder" type="text" id="bs-弓" name="弓" dcr="archer">弓</label>
+          <label class="stockpile boarder" type="text" id="bs-大" name="大" dcr="general">大</label>
+          <label class="stockpile boarder" type="text" id="bs-中" name="中" dcr="lieutenant">中</label>
+          <label class="stockpile boarder" type="text" id="bs-小" name="小" dcr="minor general">小</label>
+        </span>
+        <span id='w-army' class="army">
+          <label>army size:</label>
+          <span id='as-w'>0</span>
+        </span>
+      </div>
+      
+      <div id="War">
+        <h5 class="card-title row">Which road you Choose?</h5>
+        <button type="button" id="Attack">Attack</button>
+        <button type="button" id="Stack">Stack</button>
+      </div>
+
     </div>
 
-    <div class="boarder" id="Captured">
+    <div id="Captured">
       <div id="black_Captured">
         <h3>Black Captured</h3>
         <label class="captured boarder" type="text" id="bc-帥" name="帥">帥</label>

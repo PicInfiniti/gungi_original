@@ -89,22 +89,24 @@ a
     font-weight: bold
     color: #ffcf9e00
     &:hover
-      border: .25vh solid green
-      box-shadow: 0px 0px 5px 1px green
+      border: .2vh solid green
+      box-shadow: 0px 0px 10px 3px green
     
 
 .info
   padding: min(1vh, 1vw)
   font-size: min(3vh, 3vw)
-  line-height: 0vh
+  padding-top: 0
 
   h3
     padding-left: 1vw
-    margin-top: 2vh
+    margin-top: 1vh
+    
   .status
     display: grid
     grid-template-columns: repeat(3, 1fr)
-    line-height: 4vh
+    margin-top: -3vh
+    margin-bottom: 1vh
     
 
     button
@@ -118,8 +120,10 @@ a
       font-size: min(3vh, 3vw)
       width: 10vw
       height: 7vh
-       
-
+      &:hover
+        background-color: green
+        color: white
+        cursor: pointer
 
     #PB
       grid-column: 1
@@ -147,6 +151,141 @@ a
         outline: min(1vh, 1vw) #d1d1d1 solid
         outline-offset: 0px
 
+  #tower_details
+    h3
+      padding-left: 1vw
+      margin-top: .5vh
+
+    .tower
+      margin-top: -2vh
+      display: inline-grid
+      
+      [name=fake]
+        margin-top: -8%
+        margin-left: 5vw
+        grid-column: 1
+        grid-row: 1
+        border-radius: min(1vh, 1vw)
+        padding: min(2vh, 2vw)
+        display: inline-grid
+        grid-template-columns: repeat(3, 1fr)
+        column-gap: min(1vh, 1vw)
+        row-gap: min(1vh, 1vw)
+        z-index: -1
+        label
+          aspect-ratio: 1
+          width: min(8vh, 8vw)
+          height: min(8vh, 8vw)
+          box-sizing: border-box
+          text-align: center
+          line-height: min(7vh, 7vw)
+          font-size: min(5vh, 5vw)
+          font-weight: bold
+          color: #ffcf9e00
+          box-shadow: 0px 0px 5px 1px #999999
+
+
+      [name=board]
+        margin-top: -8%
+        margin-left: 5vw
+        grid-column: 1
+        grid-row: 1
+        padding: min(2vh, 2vw)
+        display: inline-grid
+        grid-template-columns: repeat(3, 1fr)
+        column-gap: min(1vh, 1vw)
+        row-gap: min(1vh, 1vw)
+        label
+          aspect-ratio: 1
+          width: min(8vh, 8vw)
+          height: min(8vh, 8vw)
+          box-sizing: border-box
+          text-align: center
+          line-height: min(7vh, 7vw)
+          font-size: min(5vh, 5vw)
+          font-weight: bold
+          color: #ffcf9e00
+          &:hover
+            border: .25vh solid #009699
+            box-shadow: 0px 0px 10px 3px #009699
+      
+  #black_stockpile, #white_stockpile
+    font-size: min(3vh, 3vw)
+    line-height: 4vh
+    padding-bottom: 1vh
+    h3
+      margin-top: .5vh
+      margin-bottom: 2vh
+    [name=pile]
+      label
+        &:hover
+          color: red
+          border: .1vh solid #fc9803
+          box-shadow: 0px 0px 10px 3px #fc9803
+          &:after
+            text-transform: capitalize
+            content: attr(dcr)
+            padding: min(.3vh, .3vw) min(1vh, 1vw)
+            color: black
+            font-size: min(2vh, 2vw)
+            font-weight: bold
+            border-radius: min(.5vh, .5vw)
+            box-shadow: 0px 0px 10px 3px #009699
+            position: absolute
+            left: 65vw
+            top: 72vh
+            z-index:10
+
+      
+    .army
+      float: right
+      color: rgb(0, 56, 24)
+
+  #War
+    padding: .5vw
+    margin: .5vw
+    border: min(.2vh, .2vw) solid rgba(153, 153, 153, 0.604)
+    border-radius: min(.75vh, .75vw)
+    text-align: center
+    display: none
+    h5
+      margin: 0
+      text-align: left
+      padding-bottom: 1vh
+
+    #Attack
+      grid-column: 2
+      text-align: center
+      margin: min(1vh, 1vw)
+      background-color: #dc3545
+      color: white
+      border: min(.2vh, .2vw) solid #dc3545
+      border-radius: min(.5vh, .5vw)
+      font-size: min(2vh, 2vw)
+      width: 10vw
+      height: 5vh
+      &:hover
+        background-color: #c5303f
+        color: white
+        cursor: pointer
+
+    #Stack
+      grid-column: 2
+      text-align: center
+      margin: min(1vh, 1vw)
+      background-color: #ffc107
+      color: black
+      border: min(.2vh, .2vw) solid #ffc107
+      border-radius: min(.5vh, .5vw)
+      font-size: min(2vh, 2vw)
+      width: 10vw
+      height: 5vh
+      &:hover
+        background-color: #ebb001
+        color: black
+        cursor: pointer
+
+
 
     
   
@@ -168,7 +307,6 @@ a
 
   .buttonBox
     float: right
-    right: 3vw
 
     button
       background-color: transparent
@@ -178,60 +316,5 @@ a
       font-size: min(3vh, 3vw)
 
 
-#tower_details
-  h3
-    padding-left: 1vw
-    margin-top: 3vh
-  .tower
-    display: inline-grid
-    
-    [name=fake]
-      margin-top: -8%
-      margin-left: 30%
-      grid-column: 1
-      grid-row: 1
-      border-radius: min(1vh, 1vw)
-      padding: min(2vh, 2vw)
-      display: inline-grid
-      grid-template-columns: repeat(3, 1fr)
-      column-gap: min(1vh, 1vw)
-      row-gap: min(1vh, 1vw)
-      z-index: -1
-      label
-        aspect-ratio: 1
-        width: min(8vh, 8vw)
-        height: min(8vh, 8vw)
-        box-sizing: border-box
-        text-align: center
-        line-height: min(7vh, 7vw)
-        font-size: min(5vh, 5vw)
-        font-weight: bold
-        color: #ffcf9e00
-        box-shadow: 0px 0px 5px 1px #999999
 
-
-    [name=board]
-      margin-top: -8%
-      margin-left: 30%
-      grid-column: 1
-      grid-row: 1
-      padding: min(2vh, 2vw)
-      display: inline-grid
-      grid-template-columns: repeat(3, 1fr)
-      column-gap: min(1vh, 1vw)
-      row-gap: min(1vh, 1vw)
-      label
-        aspect-ratio: 1
-        width: min(8vh, 8vw)
-        height: min(8vh, 8vw)
-        box-sizing: border-box
-        text-align: center
-        line-height: min(7vh, 7vw)
-        font-size: min(5vh, 5vw)
-        font-weight: bold
-        color: #ffcf9e00
-        &:hover
-          border: .25vh solid #009699
-          box-shadow: 0px 0px 5px 1px #009699
-    
 
