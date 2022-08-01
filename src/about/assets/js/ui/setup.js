@@ -19,11 +19,6 @@ import {
   update_board, table
 } from './utils'
 
-
-$(document).bind("contextmenu", function (e) {
-  return false;
-});
-
 // set up +++++++++++++++++++++++++++++++++
 // parent=marshal, tag m name 5-6
 table('#marshal_1', 'm1')

@@ -11,3 +11,7 @@ import "./assets/sass/about.sass"
 import './assets/js/ui/setup'
 import './assets/js/ui/Interactions'
 // ----------------------------------------
+
+$(document).bind("contextmenu", function (e) {
+  return false;
+});

@@ -24,17 +24,10 @@ $('.box').mousedown(function (event) {
       Select_Square(this, 'green');
 
       gungi = $(this).attr("id").split('-')[0];
-      click_pos.src = $(this).attr("name");
-      // --------------------------------------------------------
-      Show_Moves(Piece_Guid[gungi], $(this).attr("name"))
-      break;
-
-    case 3:
-
-      gungi = $(this).attr("id").split('-')[0];
       click_pos.dst = $(this).attr("name");
+      // --------------------------------------------------------
 
-      // Try Move from main board
+
       let Movement = Movement_Possibility(Piece_Guid[gungi], click_pos.src, click_pos.dst)
 
       if (Movement.length == 1) {
@@ -43,8 +36,18 @@ $('.box').mousedown(function (event) {
           dst: click_pos.dst,
           type: Movement[0].type
         })
+        click_pos.src = null;
+        click_pos.dst = null;
         Reset_Sections();
       }
+
+      if (Show_Moves(Piece_Guid[gungi], $(this).attr("name")) > 0) {
+        click_pos.src = $(this).attr("name");
+      } else {
+        click_pos.src = null;
+        click_pos.dst = null;
+      }
+
       break;
 
     default:

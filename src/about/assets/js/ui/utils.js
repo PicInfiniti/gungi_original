@@ -96,6 +96,7 @@ export function Show_Moves(gungi, src) {
 
     });
   }
+  return Moves.length
 }
 
 export function table(name, tag) {
