@@ -1,0 +1,1517 @@
+{
+  "move": [{
+    "Num": 0,
+    "move": {
+      "piece": {
+        "symbol": "帥",
+        "color": "b",
+        "name": "marshal",
+        "src": null
+      },
+      "dst": "0-4",
+      "type": "place"
+    }
+  }, {
+    "Num": 1,
+    "move": {
+      "piece": {
+        "symbol": "帥",
+        "color": "w",
+        "name": "marshal",
+        "src": null
+      },
+      "dst": "6-4",
+      "type": "place"
+    }
+  }, {
+    "Num": 3,
+    "move": {
+      "piece": null,
+      "dst": null,
+      "type": "ready"
+    }
+  }, {
+    "Num": 4,
+    "move": {
+      "piece": null,
+      "dst": null,
+      "type": "ready"
+    }
+  }, {
+    "Num": 4,
+    "move": {
+      "piece": {
+        "symbol": "侍",
+        "color": "w",
+        "name": "samurai",
+        "src": null
+      },
+      "dst": "5-5",
+      "type": "place"
+    }
+  }, {
+    "Num": 5,
+    "move": {
+      "piece": {
+        "symbol": "侍",
+        "color": "b",
+        "name": "samurai",
+        "src": null
+      },
+      "dst": "1-5",
+      "type": "place"
+    }
+  }, {
+    "Num": 6,
+    "move": {
+      "piece": {
+        "symbol": "侍",
+        "color": "w",
+        "name": "samurai",
+        "src": null
+      },
+      "dst": "5-4",
+      "type": "place"
+    }
+  }, {
+    "Num": 7,
+    "move": {
+      "piece": {
+        "symbol": "帥",
+        "color": "b",
+        "name": "marshal",
+        "src": "0-4"
+      },
+      "dst": "1-4",
+      "type": "move"
+    }
+  }, {
+    "Num": 8,
+    "move": {
+      "piece": {
+        "symbol": "侍",
+        "color": "w",
+        "name": "samurai",
+        "src": "5-5"
+      },
+      "dst": "4-4",
+      "type": "move"
+    }
+  }, {
+    "Num": 9,
+    "move": {
+      "piece": {
+        "symbol": "帥",
+        "color": "b",
+        "name": "marshal",
+        "src": "1-4"
+      },
+      "dst": "2-5",
+      "type": "move"
+    }
+  }, {
+    "Num": 10,
+    "move": {
+      "piece": {
+        "symbol": "侍",
+        "color": "w",
+        "name": "samurai",
+        "src": "5-4"
+      },
+      "dst": "4-5",
+      "type": "move"
+    }
+  }, {
+    "Num": 11,
+    "move": {
+      "piece": {
+        "symbol": "帥",
+        "color": "b",
+        "name": "marshal",
+        "src": "2-5"
+      },
+      "dst": "1-4",
+      "type": "move"
+    }
+  }, {
+    "Num": 12,
+    "move": {
+      "piece": {
+        "symbol": "侍",
+        "color": "w",
+        "name": "samurai",
+        "src": "4-4"
+      },
+      "dst": "3-5",
+      "type": "move"
+    }
+  }, {
+    "Num": 13,
+    "move": {
+      "piece": {
+        "symbol": "侍",
+        "color": "b",
+        "name": "samurai",
+        "src": "1-5"
+      },
+      "dst": "2-4",
+      "type": "move"
+    }
+  }, {
+    "Num": 14,
+    "move": {
+      "piece": {
+        "symbol": "侍",
+        "color": "w",
+        "name": "samurai",
+        "src": "3-5"
+      },
+      "dst": "4-4",
+      "type": "move"
+    }
+  }, {
+    "Num": 15,
+    "move": {
+      "piece": {
+        "symbol": "侍",
+        "color": "b",
+        "name": "samurai",
+        "src": "2-4"
+      },
+      "dst": "1-3",
+      "type": "move"
+    }
+  }, {
+    "Num": 16,
+    "move": {
+      "piece": {
+        "symbol": "帥",
+        "color": "w",
+        "name": "marshal",
+        "src": "6-4"
+      },
+      "dst": "5-4",
+      "type": "move"
+    }
+  }, {
+    "Num": 17,
+    "move": {
+      "piece": {
+        "symbol": "帥",
+        "color": "b",
+        "name": "marshal",
+        "src": "1-4"
+      },
+      "dst": "2-3",
+      "type": "move"
+    }
+  }, {
+    "Num": 18,
+    "move": {
+      "piece": {
+        "symbol": "帥",
+        "color": "w",
+        "name": "marshal",
+        "src": "5-4"
+      },
+      "dst": "4-3",
+      "type": "move"
+    }
+  }, {
+    "Num": 19,
+    "move": {
+      "piece": {
+        "symbol": "侍",
+        "color": "b",
+        "name": "samurai",
+        "src": "1-3"
+      },
+      "dst": "2-2",
+      "type": "move"
+    }
+  }, {
+    "Num": 20,
+    "move": {
+      "piece": {
+        "symbol": "侍",
+        "color": "w",
+        "name": "samurai",
+        "src": "4-5"
+      },
+      "dst": "3-4",
+      "type": "move"
+    }
+  }, {
+    "Num": 21,
+    "move": {
+      "piece": {
+        "symbol": "帥",
+        "color": "b",
+        "name": "marshal",
+        "src": "2-3"
+      },
+      "dst": "1-2",
+      "type": "move"
+    }
+  }, {
+    "Num": 22,
+    "move": {
+      "piece": {
+        "symbol": "侍",
+        "color": "w",
+        "name": "samurai",
+        "src": "4-4"
+      },
+      "dst": "3-3",
+      "type": "move"
+    }
+  }, {
+    "Num": 23,
+    "move": {
+      "piece": {
+        "symbol": "兵",
+        "color": "b",
+        "name": "pawn",
+        "src": null
+      },
+      "dst": "3-3",
+      "type": "place"
+    }
+  }, {
+    "Num": 24,
+    "move": {
+      "piece": {
+        "symbol": "馬",
+        "color": "w",
+        "name": "knight",
+        "src": null
+      },
+      "dst": "3-3",
+      "type": "place"
+    }
+  }, {
+    "Num": 25,
+    "move": {
+      "piece": {
+        "symbol": "侍",
+        "color": "b",
+        "name": "samurai",
+        "src": "2-2"
+      },
+      "dst": "3-3",
+      "type": "attack"
+    }
+  }, {
+    "Num": 26,
+    "move": {
+      "piece": {
+        "symbol": "帥",
+        "color": "w",
+        "name": "marshal",
+        "src": "4-3"
+      },
+      "dst": "3-3",
+      "type": "attack"
+    }
+  }, {
+    "Num": 27,
+    "move": {
+      "piece": {
+        "symbol": "馬",
+        "color": "b",
+        "name": "knight",
+        "src": null
+      },
+      "dst": "1-4",
+      "type": "place"
+    }
+  }, {
+    "Num": 28,
+    "move": {
+      "piece": {
+        "symbol": "帥",
+        "color": "w",
+        "name": "marshal",
+        "src": "3-3"
+      },
+      "dst": "2-4",
+      "type": "move"
+    }
+  }, {
+    "Num": 29,
+    "move": {
+      "piece": {
+        "symbol": "馬",
+        "color": "b",
+        "name": "knight",
+        "src": "1-4"
+      },
+      "dst": "1-3",
+      "type": "move"
+    }
+  }, {
+    "Num": 30,
+    "move": {
+      "piece": {
+        "symbol": "侍",
+        "color": "w",
+        "name": "samurai",
+        "src": "3-4"
+      },
+      "dst": "2-3",
+      "type": "move"
+    }
+  }, {
+    "Num": 31,
+    "move": {
+      "piece": {
+        "symbol": "馬",
+        "color": "b",
+        "name": "knight",
+        "src": null
+      },
+      "dst": "2-3",
+      "type": "place"
+    }
+  }, {
+    "Num": 32,
+    "move": {
+      "piece": {
+        "symbol": "兵",
+        "color": "w",
+        "name": "pawn",
+        "src": null
+      },
+      "dst": "3-3",
+      "type": "place"
+    }
+  }, {
+    "Num": 33,
+    "move": {
+      "piece": {
+        "symbol": "侍",
+        "color": "b",
+        "name": "samurai",
+        "src": null
+      },
+      "dst": "1-3",
+      "type": "place"
+    }
+  }, {
+    "Num": 34,
+    "move": {
+      "piece": {
+        "symbol": "兵",
+        "color": "w",
+        "name": "pawn",
+        "src": "3-3"
+      },
+      "dst": "2-3",
+      "type": "attack"
+    }
+  }, {
+    "Num": 35,
+    "move": {
+      "piece": {
+        "symbol": "帥",
+        "color": "b",
+        "name": "marshal",
+        "src": "1-2"
+      },
+      "dst": "2-2",
+      "type": "move"
+    }
+  }, {
+    "Num": 36,
+    "move": {
+      "piece": {
+        "symbol": "兵",
+        "color": "w",
+        "name": "pawn",
+        "src": "2-3"
+      },
+      "dst": "1-3",
+      "type": "stack"
+    }
+  }, {
+    "Num": 37,
+    "move": {
+      "piece": {
+        "symbol": "兵",
+        "color": "b",
+        "name": "pawn",
+        "src": null
+      },
+      "dst": "4-5",
+      "type": "place"
+    }
+  }, {
+    "Num": 38,
+    "move": {
+      "piece": {
+        "symbol": "兵",
+        "color": "w",
+        "name": "pawn",
+        "src": null
+      },
+      "dst": "3-2",
+      "type": "place"
+    }
+  }, {
+    "Num": 39,
+    "move": {
+      "piece": {
+        "symbol": "帥",
+        "color": "b",
+        "name": "marshal",
+        "src": "2-2"
+      },
+      "dst": "3-1",
+      "type": "move"
+    }
+  }, {
+    "Num": 40,
+    "move": {
+      "piece": {
+        "symbol": "帥",
+        "color": "w",
+        "name": "marshal",
+        "src": "2-4"
+      },
+      "dst": "3-3",
+      "type": "attack"
+    }
+  }, {
+    "Num": 41,
+    "move": {
+      "piece": {
+        "symbol": "帥",
+        "color": "b",
+        "name": "marshal",
+        "src": "3-1"
+      },
+      "dst": "4-1",
+      "type": "move"
+    }
+  }, {
+    "Num": 42,
+    "move": {
+      "piece": {
+        "symbol": "帥",
+        "color": "w",
+        "name": "marshal",
+        "src": "3-3"
+      },
+      "dst": "4-4",
+      "type": "move"
+    }
+  }, {
+    "Num": 43,
+    "move": {
+      "piece": {
+        "symbol": "帥",
+        "color": "b",
+        "name": "marshal",
+        "src": "4-1"
+      },
+      "dst": "3-1",
+      "type": "move"
+    }
+  }, {
+    "Num": 44,
+    "move": {
+      "piece": {
+        "symbol": "帥",
+        "color": "w",
+        "name": "marshal",
+        "src": "4-4"
+      },
+      "dst": "4-3",
+      "type": "move"
+    }
+  }, {
+    "Num": 45,
+    "move": {
+      "piece": {
+        "symbol": "帥",
+        "color": "b",
+        "name": "marshal",
+        "src": "3-1"
+      },
+      "dst": "2-1",
+      "type": "move"
+    }
+  }, {
+    "Num": 46,
+    "move": {
+      "piece": {
+        "symbol": "馬",
+        "color": "w",
+        "name": "knight",
+        "src": null
+      },
+      "dst": "3-4",
+      "type": "place"
+    }
+  }, {
+    "Num": 47,
+    "move": {
+      "piece": {
+        "symbol": "帥",
+        "color": "b",
+        "name": "marshal",
+        "src": "2-1"
+      },
+      "dst": "1-1",
+      "type": "move"
+    }
+  }, {
+    "Num": 48,
+    "move": {
+      "piece": {
+        "symbol": "兵",
+        "color": "w",
+        "name": "pawn",
+        "src": "1-3"
+      },
+      "dst": "0-3",
+      "type": "move"
+    }
+  }, {
+    "Num": 49,
+    "move": {
+      "piece": {
+        "symbol": "帥",
+        "color": "b",
+        "name": "marshal",
+        "src": "1-1"
+      },
+      "dst": "0-2",
+      "type": "move"
+    }
+  }, {
+    "Num": 50,
+    "move": {
+      "piece": {
+        "symbol": "侍",
+        "color": "w",
+        "name": "samurai",
+        "src": "3-3"
+      },
+      "dst": "2-2",
+      "type": "move"
+    }
+  }, {
+    "Num": 51,
+    "move": {
+      "piece": {
+        "symbol": "侍",
+        "color": "b",
+        "name": "samurai",
+        "src": "1-3"
+      },
+      "dst": "3-1",
+      "type": "move"
+    }
+  }, {
+    "Num": 52,
+    "move": {
+      "piece": {
+        "symbol": "侍",
+        "color": "w",
+        "name": "samurai",
+        "src": "2-2"
+      },
+      "dst": "3-1",
+      "type": "attack"
+    }
+  }, {
+    "Num": 53,
+    "move": {
+      "piece": {
+        "symbol": "馬",
+        "color": "b",
+        "name": "knight",
+        "src": "1-3"
+      },
+      "dst": "3-4",
+      "type": "attack"
+    }
+  }, {
+    "Num": 54,
+    "move": {
+      "piece": {
+        "symbol": "侍",
+        "color": "w",
+        "name": "samurai",
+        "src": "2-3"
+      },
+      "dst": "3-4",
+      "type": "attack"
+    }
+  }, {
+    "Num": 55,
+    "move": {
+      "piece": {
+        "symbol": "帥",
+        "color": "b",
+        "name": "marshal",
+        "src": "0-2"
+      },
+      "dst": "0-3",
+      "type": "attack"
+    }
+  }, {
+    "Num": 56,
+    "move": {
+      "piece": {
+        "symbol": "侍",
+        "color": "w",
+        "name": "samurai",
+        "src": "3-4"
+      },
+      "dst": "4-5",
+      "type": "attack"
+    }
+  }, {
+    "Num": 57,
+    "move": {
+      "piece": {
+        "symbol": "帥",
+        "color": "b",
+        "name": "marshal",
+        "src": "0-3"
+      },
+      "dst": "1-3",
+      "type": "move"
+    }
+  }, {
+    "Num": 58,
+    "move": {
+      "piece": {
+        "symbol": "侍",
+        "color": "w",
+        "name": "samurai",
+        "src": "4-5"
+      },
+      "dst": "3-4",
+      "type": "move"
+    }
+  }, {
+    "Num": 59,
+    "move": {
+      "piece": {
+        "symbol": "帥",
+        "color": "b",
+        "name": "marshal",
+        "src": "1-3"
+      },
+      "dst": "2-4",
+      "type": "move"
+    }
+  }, {
+    "Num": 60,
+    "move": {
+      "piece": {
+        "symbol": "侍",
+        "color": "w",
+        "name": "samurai",
+        "src": "3-1"
+      },
+      "dst": "2-2",
+      "type": "move"
+    }
+  }, {
+    "Num": 61,
+    "move": {
+      "piece": {
+        "symbol": "帥",
+        "color": "b",
+        "name": "marshal",
+        "src": "2-4"
+      },
+      "dst": "3-5",
+      "type": "move"
+    }
+  }, {
+    "Num": 62,
+    "move": {
+      "piece": {
+        "symbol": "侍",
+        "color": "w",
+        "name": "samurai",
+        "src": "2-2"
+      },
+      "dst": "3-3",
+      "type": "move"
+    }
+  }, {
+    "Num": 63,
+    "move": {
+      "piece": {
+        "symbol": "帥",
+        "color": "b",
+        "name": "marshal",
+        "src": "3-5"
+      },
+      "dst": "4-6",
+      "type": "move"
+    }
+  }, {
+    "Num": 64,
+    "move": {
+      "piece": {
+        "symbol": "侍",
+        "color": "w",
+        "name": "samurai",
+        "src": "3-3"
+      },
+      "dst": "4-4",
+      "type": "move"
+    }
+  }, {
+    "Num": 65,
+    "move": {
+      "piece": {
+        "symbol": "帥",
+        "color": "b",
+        "name": "marshal",
+        "src": "4-6"
+      },
+      "dst": "3-6",
+      "type": "move"
+    }
+  }, {
+    "Num": 66,
+    "move": {
+      "piece": {
+        "symbol": "帥",
+        "color": "w",
+        "name": "marshal",
+        "src": "4-3"
+      },
+      "dst": "4-4",
+      "type": "stack"
+    }
+  }, {
+    "Num": 67,
+    "move": {
+      "piece": {
+        "symbol": "帥",
+        "color": "b",
+        "name": "marshal",
+        "src": "3-6"
+      },
+      "dst": "4-6",
+      "type": "move"
+    }
+  }, {
+    "Num": 68,
+    "move": {
+      "piece": {
+        "symbol": "侍",
+        "color": "w",
+        "name": "samurai",
+        "src": "3-4"
+      },
+      "dst": "4-5",
+      "type": "move"
+    }
+  }, {
+    "Num": 69,
+    "move": {
+      "piece": {
+        "symbol": "帥",
+        "color": "b",
+        "name": "marshal",
+        "src": "4-6"
+      },
+      "dst": "4-7",
+      "type": "move"
+    }
+  }, {
+    "Num": 70,
+    "move": {
+      "piece": {
+        "symbol": "帥",
+        "color": "w",
+        "name": "marshal",
+        "src": "4-4"
+      },
+      "dst": "4-5",
+      "type": "stack"
+    }
+  }, {
+    "Num": 71,
+    "move": {
+      "piece": {
+        "symbol": "帥",
+        "color": "b",
+        "name": "marshal",
+        "src": "4-7"
+      },
+      "dst": "3-7",
+      "type": "move"
+    }
+  }, {
+    "Num": 72,
+    "move": {
+      "piece": {
+        "symbol": "侍",
+        "color": "w",
+        "name": "samurai",
+        "src": "4-4"
+      },
+      "dst": "3-5",
+      "type": "move"
+    }
+  }, {
+    "Num": 73,
+    "move": {
+      "piece": {
+        "symbol": "帥",
+        "color": "b",
+        "name": "marshal",
+        "src": "3-7"
+      },
+      "dst": "2-7",
+      "type": "move"
+    }
+  }, {
+    "Num": 74,
+    "move": {
+      "piece": {
+        "symbol": "帥",
+        "color": "w",
+        "name": "marshal",
+        "src": "4-5"
+      },
+      "dst": "3-5",
+      "type": "stack"
+    }
+  }, {
+    "Num": 75,
+    "move": {
+      "piece": {
+        "symbol": "帥",
+        "color": "b",
+        "name": "marshal",
+        "src": "2-7"
+      },
+      "dst": "1-6",
+      "type": "move"
+    }
+  }, {
+    "Num": 76,
+    "move": {
+      "piece": {
+        "symbol": "侍",
+        "color": "w",
+        "name": "samurai",
+        "src": "4-5"
+      },
+      "dst": "3-6",
+      "type": "move"
+    }
+  }, {
+    "Num": 77,
+    "move": {
+      "piece": {
+        "symbol": "帥",
+        "color": "b",
+        "name": "marshal",
+        "src": "1-6"
+      },
+      "dst": "1-5",
+      "type": "move"
+    }
+  }, {
+    "Num": 78,
+    "move": {
+      "piece": {
+        "symbol": "侍",
+        "color": "w",
+        "name": "samurai",
+        "src": "3-6"
+      },
+      "dst": "2-5",
+      "type": "move"
+    }
+  }, {
+    "Num": 79,
+    "move": {
+      "piece": {
+        "symbol": "帥",
+        "color": "b",
+        "name": "marshal",
+        "src": "1-5"
+      },
+      "dst": "0-4",
+      "type": "move"
+    }
+  }, {
+    "Num": 80,
+    "move": {
+      "piece": {
+        "symbol": "帥",
+        "color": "w",
+        "name": "marshal",
+        "src": "3-5"
+      },
+      "dst": "2-4",
+      "type": "move"
+    }
+  }, {
+    "Num": 81,
+    "move": {
+      "piece": {
+        "symbol": "帥",
+        "color": "b",
+        "name": "marshal",
+        "src": "0-4"
+      },
+      "dst": "0-3",
+      "type": "move"
+    }
+  }, {
+    "Num": 82,
+    "move": {
+      "piece": {
+        "symbol": "帥",
+        "color": "w",
+        "name": "marshal",
+        "src": "2-4"
+      },
+      "dst": "2-3",
+      "type": "move"
+    }
+  }, {
+    "Num": 83,
+    "move": {
+      "piece": {
+        "symbol": "帥",
+        "color": "b",
+        "name": "marshal",
+        "src": "0-3"
+      },
+      "dst": "0-2",
+      "type": "move"
+    }
+  }, {
+    "Num": 84,
+    "move": {
+      "piece": {
+        "symbol": "帥",
+        "color": "w",
+        "name": "marshal",
+        "src": "2-3"
+      },
+      "dst": "2-2",
+      "type": "move"
+    }
+  }, {
+    "Num": 85,
+    "move": {
+      "piece": {
+        "symbol": "帥",
+        "color": "b",
+        "name": "marshal",
+        "src": "0-2"
+      },
+      "dst": "0-1",
+      "type": "move"
+    }
+  }, {
+    "Num": 86,
+    "move": {
+      "piece": {
+        "symbol": "帥",
+        "color": "w",
+        "name": "marshal",
+        "src": "2-2"
+      },
+      "dst": "2-1",
+      "type": "move"
+    }
+  }, {
+    "Num": 87,
+    "move": {
+      "piece": {
+        "symbol": "帥",
+        "color": "b",
+        "name": "marshal",
+        "src": "0-1"
+      },
+      "dst": "0-2",
+      "type": "move"
+    }
+  }, {
+    "Num": 88,
+    "move": {
+      "piece": {
+        "symbol": "侍",
+        "color": "w",
+        "name": "samurai",
+        "src": "3-5"
+      },
+      "dst": "2-4",
+      "type": "move"
+    }
+  }, {
+    "Num": 89,
+    "move": {
+      "piece": {
+        "symbol": "帥",
+        "color": "b",
+        "name": "marshal",
+        "src": "0-2"
+      },
+      "dst": "0-1",
+      "type": "move"
+    }
+  }, {
+    "Num": 90,
+    "move": {
+      "piece": {
+        "symbol": "侍",
+        "color": "w",
+        "name": "samurai",
+        "src": "2-4"
+      },
+      "dst": "1-3",
+      "type": "move"
+    }
+  }, {
+    "Num": 91,
+    "move": {
+      "piece": {
+        "symbol": "帥",
+        "color": "b",
+        "name": "marshal",
+        "src": "0-1"
+      },
+      "dst": "0-0",
+      "type": "move"
+    }
+  }, {
+    "Num": 92,
+    "move": {
+      "piece": {
+        "symbol": "侍",
+        "color": "w",
+        "name": "samurai",
+        "src": "2-5"
+      },
+      "dst": "3-4",
+      "type": "move"
+    }
+  }, {
+    "Num": 93,
+    "move": {
+      "piece": {
+        "symbol": "帥",
+        "color": "b",
+        "name": "marshal",
+        "src": "0-0"
+      },
+      "dst": "0-1",
+      "type": "move"
+    }
+  }, {
+    "Num": 94,
+    "move": {
+      "piece": {
+        "symbol": "侍",
+        "color": "w",
+        "name": "samurai",
+        "src": "3-4"
+      },
+      "dst": "2-3",
+      "type": "move"
+    }
+  }, {
+    "Num": 95,
+    "move": {
+      "piece": {
+        "symbol": "帥",
+        "color": "b",
+        "name": "marshal",
+        "src": "0-1"
+      },
+      "dst": "0-0",
+      "type": "move"
+    }
+  }, {
+    "Num": 96,
+    "move": {
+      "piece": {
+        "symbol": "兵",
+        "color": "w",
+        "name": "pawn",
+        "src": "3-2"
+      },
+      "dst": "2-2",
+      "type": "move"
+    }
+  }, {
+    "Num": 97,
+    "move": {
+      "piece": {
+        "symbol": "帥",
+        "color": "b",
+        "name": "marshal",
+        "src": "0-0"
+      },
+      "dst": "0-1",
+      "type": "move"
+    }
+  }, {
+    "Num": 98,
+    "move": {
+      "piece": {
+        "symbol": "兵",
+        "color": "w",
+        "name": "pawn",
+        "src": "2-2"
+      },
+      "dst": "1-2",
+      "type": "move"
+    }
+  }, {
+    "Num": 99,
+    "move": {
+      "piece": {
+        "symbol": "帥",
+        "color": "b",
+        "name": "marshal",
+        "src": "0-1"
+      },
+      "dst": "0-0",
+      "type": "move"
+    }
+  }, {
+    "Num": 100,
+    "move": {
+      "piece": {
+        "symbol": "侍",
+        "color": "w",
+        "name": "samurai",
+        "src": "1-3"
+      },
+      "dst": "2-2",
+      "type": "move"
+    }
+  }, {
+    "Num": 101,
+    "move": {
+      "piece": {
+        "symbol": "帥",
+        "color": "b",
+        "name": "marshal",
+        "src": "0-0"
+      },
+      "dst": "0-1",
+      "type": "move"
+    }
+  }, {
+    "Num": 102,
+    "move": {
+      "piece": {
+        "symbol": "侍",
+        "color": "w",
+        "name": "samurai",
+        "src": "2-3"
+      },
+      "dst": "3-2",
+      "type": "move"
+    }
+  }, {
+    "Num": 103,
+    "move": {
+      "piece": {
+        "symbol": "帥",
+        "color": "b",
+        "name": "marshal",
+        "src": "0-1"
+      },
+      "dst": "0-0",
+      "type": "move"
+    }
+  }, {
+    "Num": 104,
+    "move": {
+      "piece": {
+        "symbol": "侍",
+        "color": "w",
+        "name": "samurai",
+        "src": "3-2"
+      },
+      "dst": "2-3",
+      "type": "move"
+    }
+  }, {
+    "Num": 105,
+    "move": {
+      "piece": {
+        "symbol": "帥",
+        "color": "b",
+        "name": "marshal",
+        "src": "0-0"
+      },
+      "dst": "0-1",
+      "type": "move"
+    }
+  }, {
+    "Num": 106,
+    "move": {
+      "piece": {
+        "symbol": "侍",
+        "color": "w",
+        "name": "samurai",
+        "src": "2-2"
+      },
+      "dst": "1-3",
+      "type": "move"
+    }
+  }, {
+    "Num": 107,
+    "move": {
+      "piece": {
+        "symbol": "帥",
+        "color": "b",
+        "name": "marshal",
+        "src": "0-1"
+      },
+      "dst": "0-0",
+      "type": "move"
+    }
+  }, {
+    "Num": 108,
+    "move": {
+      "piece": {
+        "symbol": "兵",
+        "color": "w",
+        "name": "pawn",
+        "src": "1-2"
+      },
+      "dst": "0-2",
+      "type": "move"
+    }
+  }, {
+    "Num": 109,
+    "move": {
+      "piece": {
+        "symbol": "帥",
+        "color": "b",
+        "name": "marshal",
+        "src": "0-0"
+      },
+      "dst": "0-1",
+      "type": "move"
+    }
+  }, {
+    "Num": 110,
+    "move": {
+      "piece": {
+        "symbol": "侍",
+        "color": "w",
+        "name": "samurai",
+        "src": "2-3"
+      },
+      "dst": "1-2",
+      "type": "move"
+    }
+  }, {
+    "Num": 111,
+    "move": {
+      "piece": {
+        "symbol": "帥",
+        "color": "b",
+        "name": "marshal",
+        "src": "0-1"
+      },
+      "dst": "0-0",
+      "type": "move"
+    }
+  }, {
+    "Num": 112,
+    "move": {
+      "piece": {
+        "symbol": "侍",
+        "color": "w",
+        "name": "samurai",
+        "src": "1-2"
+      },
+      "dst": "0-3",
+      "type": "move"
+    }
+  }, {
+    "Num": 113,
+    "move": {
+      "piece": {
+        "symbol": "帥",
+        "color": "b",
+        "name": "marshal",
+        "src": "0-0"
+      },
+      "dst": "0-1",
+      "type": "move"
+    }
+  }, {
+    "Num": 114,
+    "move": {
+      "piece": {
+        "symbol": "侍",
+        "color": "w",
+        "name": "samurai",
+        "src": "0-3"
+      },
+      "dst": "1-2",
+      "type": "move"
+    }
+  }, {
+    "Num": 115,
+    "move": {
+      "piece": {
+        "symbol": "帥",
+        "color": "b",
+        "name": "marshal",
+        "src": "0-1"
+      },
+      "dst": "0-0",
+      "type": "move"
+    }
+  }, {
+    "Num": 116,
+    "move": {
+      "piece": {
+        "symbol": "帥",
+        "color": "w",
+        "name": "marshal",
+        "src": "2-1"
+      },
+      "dst": "2-2",
+      "type": "move"
+    }
+  }, {
+    "Num": 117,
+    "move": {
+      "piece": {
+        "symbol": "帥",
+        "color": "b",
+        "name": "marshal",
+        "src": "0-0"
+      },
+      "dst": "1-0",
+      "type": "move"
+    }
+  }, {
+    "Num": 118,
+    "move": {
+      "piece": {
+        "symbol": "帥",
+        "color": "w",
+        "name": "marshal",
+        "src": "2-2"
+      },
+      "dst": "3-1",
+      "type": "move"
+    }
+  }, {
+    "Num": 119,
+    "move": {
+      "piece": {
+        "symbol": "帥",
+        "color": "b",
+        "name": "marshal",
+        "src": "1-0"
+      },
+      "dst": "1-1",
+      "type": "move"
+    }
+  }, {
+    "Num": 120,
+    "move": {
+      "piece": {
+        "symbol": "侍",
+        "color": "w",
+        "name": "samurai",
+        "src": "1-2"
+      },
+      "dst": "0-3",
+      "type": "move"
+    }
+  }, {
+    "Num": 121,
+    "move": {
+      "piece": {
+        "symbol": "帥",
+        "color": "b",
+        "name": "marshal",
+        "src": "1-1"
+      },
+      "dst": "0-1",
+      "type": "move"
+    }
+  }, {
+    "Num": 122,
+    "move": {
+      "piece": {
+        "symbol": "帥",
+        "color": "w",
+        "name": "marshal",
+        "src": "3-1"
+      },
+      "dst": "2-0",
+      "type": "move"
+    }
+  }, {
+    "Num": 123,
+    "move": {
+      "piece": {
+        "symbol": "帥",
+        "color": "b",
+        "name": "marshal",
+        "src": "0-1"
+      },
+      "dst": "0-0",
+      "type": "move"
+    }
+  }, {
+    "Num": 124,
+    "move": {
+      "piece": {
+        "symbol": "侍",
+        "color": "w",
+        "name": "samurai",
+        "src": "1-3"
+      },
+      "dst": "2-2",
+      "type": "move"
+    }
+  }, {
+    "Num": 125,
+    "move": {
+      "piece": {
+        "symbol": "帥",
+        "color": "b",
+        "name": "marshal",
+        "src": "0-0"
+      },
+      "dst": "0-1",
+      "type": "move"
+    }
+  }, {
+    "Num": 126,
+    "move": {
+      "piece": {
+        "symbol": "帥",
+        "color": "w",
+        "name": "marshal",
+        "src": "2-0"
+      },
+      "dst": "2-1",
+      "type": "move"
+    }
+  }]
+}
