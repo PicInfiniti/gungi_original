@@ -6,7 +6,7 @@ import $ from "jquery"
 // sass ++++++++++++++++++++++++++++++++++++++++++
 import './assets/sass/style.sass'
 // import './assets/sass/main.sass'
-
+// import './about.html'
 // sass ------------------------------------------
 
 // app +++++++++++++++++++++++++++++++++++++++++++
