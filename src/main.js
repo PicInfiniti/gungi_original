@@ -5,19 +5,15 @@ import $ from "jquery"
 
 // sass ++++++++++++++++++++++++++++++++++++++++++
 import './assets/sass/style.sass'
-// import './assets/sass/main.sass'
-// import './about.html'
+
 // sass ------------------------------------------
 
 // app +++++++++++++++++++++++++++++++++++++++++++
-// import './assets/js/app'
+
 
 // app -------------------------------------------
 
 // setup +++++++++++++++++++++++++++++++++++++++++
-// import {
-//   settings
-// } from './assets/js/init'
 
 // setup -----------------------------------------
 document.addEventListener('contextmenu', event => event.preventDefault());
@@ -33,4 +29,15 @@ for (let i = 0; i < 9; i++) {
   }
 }
 
+function capitalizeFirstLetter(string) {
+  return string.charAt(0).toUpperCase() + string.slice(1);
+}
 
+$('.stockpile').hover((event) => {
+    $('.tooltip').show()
+      .text(capitalizeFirstLetter(event.target.getAttribute('dcr')))
+  },
+  (event) => {
+    $('.tooltip').hide()
+      .text('Marshal')
+  })
