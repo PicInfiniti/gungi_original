@@ -6,13 +6,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <link rel="icon" href="favicon.svg" type="image/gif"><!-- Bootstrap CSS-->
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css"
-    integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous">
 
-  <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"
-    integrity="sha384-fQybjgWLrvvRgtW6bFlB7jaZrFsaBXjsOMm/tB9LTS58ONXgqbR9W8oWht/amnpF" crossorigin="anonymous">
-  </script>
   <title>Gungi</title>
 
   <script type="module" src="main.js" defer></script>
@@ -38,227 +32,104 @@
     <p>
       There are 13 unique pieces with different ranges of mobility at different tiers.
     </p>
+    <div>
+      <div class="border">
+        <h3>Marshal x1. 帥.</h3>
+        <div class="padding board" id="marshal_1"></div>
+        <h3 class="padding board"><u>Marshal movment doesn't change while stack.</u></h3>
+      </div>
 
-    <div class="container">
-      <div class="row border">
-        <div class="container">
-          <h3>Marshal x1</h3>
-          <div id="帥" class="row">
-            <div class="padding board" id="marshal_1"></div>
-          </div>
-        </div>
+      <div class="border">
+        <h3>Pwn x9. 兵.</h3>
+        <div class="padding board" id="pawn_1"></div>
+        <div class="padding board" id="pawn_2"></div>
+        <div class="padding board" id="pawn_3"></div>
+      </div>
+
+      <div class="border">
+        <h3>Spy x2. 忍.</h3>
+        <div class="padding board" id="spy_1"></div>
+        <div class="padding board" id="spy_2"></div>
+        <div class="padding board" id="spy_3"></div>
+      </div>
+
+      <div class="border">
+        <h3>Cannon x2. 砲.</h3>
+        <div class="padding board" id="cannon_1"></div>
+        <div class="padding board" id="cannon_2"></div>
+        <div class="padding board" id="cannon_3"></div>
+      </div>
+
+      <div class="border">
+        <h3>Fortress x2. 砦.</h3>
+        <div class="padding board" id="fortress_1"></div>
+        <h3 class="padding board"><u>Fortress Can't Stack on other pieces.</u></h3>
+      </div>
+
+      <div class="border">
+        <h3>Samurai x2. 侍.</h3>
+        <div class="padding board" id="samurai_1"></div>
+        <div class="padding board" id="samurai_2"></div>
+        <div class="padding board" id="samurai_3"></div>
+      </div>
+
+      <div class="border">
+        <h3>Captain x1. 謀.</h3>
+        <div class="padding board" id="captain_1"></div>
+        <h3 class="padding board"><u>Captain inherit movement of the pieces stacked on.</u></h3>
       </div>
 
 
-      <div class="row border">
-        <div class="container">
-          <h3>Pwn x9</h3>
-          <div id="兵" class="row">
-            <div class="col">
-              <div class="padding board" id="pawn_1"></div>
-            </div>
-            <div class="col">
-              <div class="padding board" id="pawn_2"></div>
-            </div>
-            <div class="col">
-              <div class="padding board" id="pawn_3"></div>
-            </div>
-          </div>
-        </div>
+      <div class="border">
+        <h3>Musketeer x1. 筒.</h3>
+        <div class="padding board" id="musketeer_1"></div>
+        <div class="padding board" id="musketeer_2"></div>
+        <div class="padding board" id="musketeer_3"></div>
       </div>
 
-
-      <div class="row border">
-        <div class='container'>
-          <h3>Spy x2</h3>
-          <div id="忍" class="row">
-            <div class="col">
-              <div class="padding board" id="spy_1"></div>
-            </div>
-            <div class="col">
-              <div class="padding board" id="spy_2"></div>
-            </div>
-            <div class="col">
-              <div class="padding board" id="spy_3"></div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-
-
-      <div class="row border">
-        <div class='container'>
-          <h3>Cannon x2</h3>
-          <div id="砲" class="row">
-            <div class="col">
-              <div class="padding board" id="cannon_1"></div>
-            </div>
-            <div class="col">
-              <div class="padding board" id="cannon_2"></div>
-            </div>
-            <div class="col">
-              <div class="padding board" id="cannon_3"></div>
-            </div>
-          </div>
-        </div>
+      <div class="border">
+        <h3>Knight x2. 馬.</h3>
+        <div class="padding board" id="knight_1"></div>
+        <div class="padding board" id="knight_2"></div>
+        <div class="padding board" id="knight_3"></div>
       </div>
 
 
 
-      <div class="row border">
-        <div class="container">
-          <h3>Fortress x2</h3>
-          <div id="砦" class="row">
-            <div class="padding board" id="fortress_1"></div>
-          </div>
-        </div>
-      </div>
-
-
-
-      <div class="row border">
-        <div class='container'>
-          <h3>Samurai x2</h3>
-          <div id="侍" class="row">
-            <div class="col">
-              <div class="padding board" id="samurai_1"></div>
-            </div>
-            <div class="col">
-              <div class="padding board" id="samurai_2"></div>
-            </div>
-            <div class="col">
-              <div class="padding board" id="samurai_3"></div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-
-
-      <div class="row border">
-        <div class="container">
-          <h3>Captain x1</h3>
-          <div id="謀" class="row">
-            <div class="padding board" id="captain_1"></div>
-          </div>
-        </div>
-      </div>
-
-
-
-      <div class="row border">
-        <div class='container'>
-          <h3>Musketeer x1</h3>
-          <div id="筒" class="row">
-            <div class="col">
-              <div class="padding board" id="musketeer_1"></div>
-            </div>
-            <div class="col">
-              <div class="padding board" id="musketeer_2"></div>
-            </div>
-            <div class="col">
-              <div class="padding board" id="musketeer_3"></div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-
-
-      <div class="row border">
-        <div class='container'>
-          <h3>Knight x2</h3>
-          <div id="馬" class="row">
-            <div class="col">
-              <div class="padding board" id="knight_1"></div>
-            </div>
-            <div class="col">
-              <div class="padding board" id="knight_2"></div>
-            </div>
-            <div class="col">
-              <div class="padding board" id="knight_3"></div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-
-
-      <div class="row border">
-        <div class='container'>
-          <h3>Archer x2</h3>
-          <div id="弓" class="row">
-            <div class="col">
-              <div class="padding board" id="archer_1"></div>
-            </div>
-            <div class="col">
-              <div class="padding board" id="archer_2"></div>
-            </div>
-            <div class="col">
-              <div class="padding board" id="archer_3"></div>
-            </div>
-          </div>
-        </div>
+      <div class="border">
+        <h3>Archer x2. 弓.</h3>
+        <div class="padding board" id="archer_1"></div>
+        <div class="padding board" id="archer_2"></div>
+        <div class="padding board" id="archer_3"></div>
       </div>
 
 
 
 
-      <div class="row border">
-        <div class='container'>
-          <h3>General x6</h3>
-          <div id="大" class="row">
-            <div class="col">
-              <div class="padding board" id="general_1"></div>
-            </div>
-            <div class="col">
-              <div class="padding board" id="general_2"></div>
-            </div>
-            <div class="col">
-              <div class="padding board" id="general_3"></div>
-            </div>
-          </div>
-        </div>
+      <div class="border">
+        <h3>General x6. 大.</h3>
+        <div class="padding board" id="general_1"></div>
+        <div class="padding board" id="general_2"></div>
+        <div class="padding board" id="general_3"></div>
       </div>
 
 
 
-      <div class="row border">
-        <div class='container'>
-          <h3>Lieutenant x4</h3>
-          <div id="中" class="row">
-            <div class="col">
-              <div class="padding board" id="lieutenant_1"></div>
-            </div>
-            <div class="col">
-              <div class="padding board" id="lieutenant_2"></div>
-            </div>
-            <div class="col">
-              <div class="padding board" id="lieutenant_3"></div>
-            </div>
-          </div>
-        </div>
+      <div class="border">
+        <h3>Lieutenant x4. 中.</h3>
+        <div class="padding board" id="lieutenant_1"></div>
+        <div class="padding board" id="lieutenant_2"></div>
+        <div class="padding board" id="lieutenant_3"></div>
       </div>
 
 
 
 
-      <div class="row border">
-        <div class='container'>
-          <h3>Minor General x4 (小)</h3>
-          <div id="小" class="row">
-            <div class="col">
-              <div class="padding board" id="minor_general_1"></div>
-            </div>
-            <div class="col">
-              <div class="padding board" id="minor_general_2"></div>
-            </div>
-            <div class="col">
-              <div class="padding board" id="minor_general_3"></div>
-            </div>
-          </div>
-        </div>
+      <div class="border">
+        <h3>Minor General x4. 小.</h3>
+        <div class="padding board" id="minor_general_1"></div>
+        <div class="padding board" id="minor_general_2"></div>
+        <div class="padding board" id="minor_general_3"></div>
       </div>
 
     </div>

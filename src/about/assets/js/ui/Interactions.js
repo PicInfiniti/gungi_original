@@ -1,3 +1,8 @@
+// libraries +++++++++++++++++++++++++++++++++++++
+import $ from "jquery"
+
+// libraries -------------------------------------
+
 import {
   Piece_Guid
 } from './setup'

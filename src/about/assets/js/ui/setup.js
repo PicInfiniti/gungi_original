@@ -75,6 +75,9 @@ table('#minor_general_3', 'mg3')
 // Marshal
 const MARSHAL = new Mini_Desk('m1')
 MARSHAL.board[4][4][0] = new Marshal('w', 1, '4-4')
+MARSHAL.board[2][6][0] = new Pawn('w', 1, '2-6')
+MARSHAL.board[2][2][0] = new Knight('w', 1, '2-2')
+MARSHAL.board[2][2][1] = new Samurai('w', 2, '2-2')
 update_board(MARSHAL)
 
 // Pawn
