@@ -46,55 +46,67 @@ a
 
 
 .arena
-  display: inline-grid
-  // border: min(.2vh, .2vw) solid #999999
-  border-radius: min(1vh, 1vw)
   grid-column: 4
   grid-row: 1
+
+  display: grid
+  grid-template-columns: repeat(2, 1fr)
+  grid-template-rows: repeat(2, 1fr)
+
+  border: min(.2vh, .2vw) solid #999999
+  
   aspect-ratio: 1
   
   #fake
     grid-column: 1
     grid-row: 1
     padding: min(2vh, 2vw)
-    display: inline-grid
+    display: grid
     grid-template-columns: repeat(9, 1fr)
     column-gap: min(1vh, 1vw)
     row-gap: min(1vh, 1vw)
     z-index: -1
     
     label
+      display: flex
+      justify-content: center
+      align-items: center
       aspect-ratio: 1
       width: min(8vh, 8vw)
       height: min(8vh, 8vw)
-      text-align: center
       line-height: min(7vh, 7vw)
       font-size: min(5vh, 5vw)
       font-weight: bold
-      color: #ffcf9e00
-      box-shadow: 0px 0px 5px 1px #999999
+      color: transparent
+      box-shadow: 0px 0px 1vh .2vh #999999
+      border: .2vh solid #999999
+      border-radius: 10%
 
   #board
     grid-column: 1
     grid-row: 1
+
     padding: min(2vh, 2vw)
-    display: inline-grid
+    display: grid
     grid-template-columns: repeat(9, 1fr)
     column-gap: min(1vh, 1vw)
     row-gap: min(1vh, 1vw)
     label
+      display: flex
+      justify-content: center
+      align-items: center
       aspect-ratio: 1
       width: min(8vh, 8vw)
-      height: min(8vh, 8vw)
-      border-radius: min(1vh, 1vw)
-      text-align: center
-      line-height: min(7vh, 7vw)
-      font-size: min(5vh, 5vw)
+      height: min(8vh, 8vw) 
+      font-size: 5vh
       font-weight: bold
-      color: #ffcf9e00
+      color: transparent
+      border: .2vh solid transparent
+      
+      border-radius: 10%
       &:hover
         border: .2vh solid green
-        box-shadow: 0px 0px 10px 3px green
+        box-shadow: 0px 0px 1vh .5vh green
       
 
 .info
@@ -159,76 +171,98 @@ a
         outline-offset: 0px
 
   #tower_details
+    display: flex
+    flex-wrap: wrap
+    justify-content: center
     h3
       padding-left: 1vw
       margin-top: .5vh
 
     .tower
-      margin-top: -2vh
-      display: inline-grid
+      display: grid
+      grid-template-columns: repeat(1, 1fr)
+      grid-template-rows: repeat(1, 1fr)
+      margin-top: -3vh
+
+      
       
       [name=fake]
-        margin-top: -8%
-        margin-left: 5vw
         grid-column: 1
         grid-row: 1
-        border-radius: min(1vh, 1vw)
-        padding: min(2vh, 2vw)
-        display: inline-grid
+
+        display: grid
         grid-template-columns: repeat(3, 1fr)
-        column-gap: min(1vh, 1vw)
-        row-gap: min(1vh, 1vw)
+        grid-gap: 1vh
+
+        padding: 1vh
         z-index: -1
         label
-          aspect-ratio: 1
+          display: flex
+          justify-content: center
+          align-items: center
           width: min(8vh, 8vw)
           height: min(8vh, 8vw)
-          box-sizing: border-box
-          text-align: center
           line-height: min(7vh, 7vw)
           font-size: min(5vh, 5vw)
           font-weight: bold
-          color: #ffcf9e00
-          box-shadow: 0px 0px 5px 1px #999999
+          color: transparent
+          box-shadow: 0px 0px 1vh .2vh #999999
 
 
       [name=board]
-        margin-top: -8%
-        margin-left: 5vw
         grid-column: 1
         grid-row: 1
-        padding: min(2vh, 2vw)
-        display: inline-grid
+
+        display: grid
         grid-template-columns: repeat(3, 1fr)
-        column-gap: min(1vh, 1vw)
-        row-gap: min(1vh, 1vw)
+        grid-gap: 1vh
+
+        padding: 1vh
         label
-          aspect-ratio: 1
+          display: flex
+          justify-content: center
+          align-items: center
           width: min(8vh, 8vw)
           height: min(8vh, 8vw)
-          box-sizing: border-box
-          text-align: center
           line-height: min(7vh, 7vw)
           font-size: min(5vh, 5vw)
           font-weight: bold
-          color: #ffcf9e00
+          color: transparent
           &:hover
-            border: .25vh solid #009699
-            box-shadow: 0px 0px 10px 3px #009699
+            border: .2vh solid #009699
+            box-shadow: 0px 0px 1vh .2vh #009699
       
   #black_stockpile, #white_stockpile
-    font-size: min(3vh, 3vw)
+    font-size: 3vh
     line-height: 4vh
     padding-bottom: 1vh
     h3
       margin-top: .5vh
       margin-bottom: 2vh
     [name=pile]
+      display: flex
+      flex-wrap: wrap
+      
       label
+        padding: .5vh
+        margin: .5vh
+        text-align: center
+        width: 4vh
+        height: 4vh
         &:hover
           color: red
           border: .1vh solid #fc9803
-          box-shadow: 0px 0px 10px 3px #fc9803
+          box-shadow: 0px 0px 1vh .2vh #fc9803
+          sub
+            font-size: 1.5vh
+            color: black
+            font-weight: bold
+
+        sub
+          font-size: 1.5vh
+          color: red
+          font-weight: bold
+  
       
     .army
       float: right
@@ -296,8 +330,7 @@ a
 
 
 
-    
-  
+
 #Captured
   grid-column: 1/10
   grid-row: 2

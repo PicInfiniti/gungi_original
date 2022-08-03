@@ -1,4 +1,4 @@
-class Marshal {
+export class Marshal {
   constructor(color, tier = 0, src = null) {
     this.color = color
     this.name = 'marshal'
@@ -23,7 +23,7 @@ class Marshal {
 
 }
 
-class Pawn {
+export class Pawn {
   constructor(color, tier = 0, src = null) {
     this.color = color
     this.name = 'pawn'
@@ -66,7 +66,7 @@ class Pawn {
 
 }
 
-class Spy {
+export class Spy {
   constructor(color, tier = 0, src = null) {
     this.color = color
     this.name = 'spy'
@@ -106,7 +106,7 @@ class Spy {
 
 }
 
-class Cannon {
+export class Cannon {
   constructor(color, tier = 0, src = null) {
     this.color = color
     this.name = 'cannon'
@@ -144,7 +144,7 @@ class Cannon {
 
 }
 
-class Fortress {
+export class Fortress {
   constructor(color, tier = 0, src = null) {
     this.color = color
     this.name = 'fortress'
@@ -169,7 +169,7 @@ class Fortress {
 
 }
 
-class Samurai {
+export class Samurai {
   constructor(color, tier = 0, src = null) {
     this.color = color
     this.name = 'samurai'
@@ -212,7 +212,7 @@ class Samurai {
 
 }
 
-class Captain {
+export class Captain {
   constructor(color, tier = 0, src = null) {
     this.color = color
     this.name = 'captain'
@@ -270,7 +270,7 @@ class Captain {
   }
 }
 
-class Musketeer {
+export class Musketeer {
   constructor(color, tier = 0, src = null) {
     this.color = color
     this.name = 'musketeer'
@@ -305,7 +305,7 @@ class Musketeer {
 
 }
 
-class Knight {
+export class Knight {
   constructor(color, tier = 0, src = null) {
     this.color = color
     this.name = 'knight'
@@ -357,7 +357,7 @@ class Knight {
 
 }
 
-class Archer {
+export class Archer {
   constructor(color, tier = 0, src = null) {
     this.color = color
     this.name = 'archer'
@@ -435,7 +435,7 @@ class Archer {
 
 }
 
-class General {
+export class General {
   constructor(color, tier = 0, src = null) {
     this.color = color
     this.name = 'general'
@@ -476,7 +476,7 @@ class General {
 
 }
 
-class Lieutenant {
+export class Lieutenant {
   constructor(color, tier = 0, src = null) {
     this.color = color
     this.name = 'lieutenant'
@@ -522,7 +522,7 @@ class Lieutenant {
 
 }
 
-class Minor_General {
+export class Minor_General {
   constructor(color, tier = 0, src = null) {
     this.color = color
     this.name = 'minor_general'
@@ -572,7 +572,7 @@ class Minor_General {
 }
 
 // related functions
-path_generator = (piece, board, direction = ['East']) => {
+function path_generator(piece, board, direction = ['East']) {
   let path = []
   src = {
     x: Number(piece.src.split('-')[0]),
@@ -702,7 +702,7 @@ path_generator = (piece, board, direction = ['East']) => {
   return path;
 }
 
-point_generator = (piece, board, points = [
+function point_generator(piece, board, points = [
   [1, -1],
   [1, 0],
   [1, 1],
@@ -711,15 +711,15 @@ point_generator = (piece, board, points = [
   [-1, 1],
   [0, -1],
   [0, 1]
-]) => {
+]) {
   let temp = [];
-  src = {
+  let src = {
     x: Number(piece.src.split('-')[0]),
     y: Number(piece.src.split('-')[1])
   }
 
   points.forEach((item) => {
-    x = piece.color == 'b' ? item[0] : -item[0]
+    let x = piece.color == 'b' ? item[0] : -item[0]
     if (
       src.x + x < 9 && src.x + x >= 0 &&
       src.y + item[1] < 9 && src.y + item[1] >= 0
@@ -742,7 +742,7 @@ point_generator = (piece, board, points = [
 }
 
 
-short_path = (piece, board, direction = ['East', 'West', 'North', 'South'], limit = 2) => {
+function short_path(piece, board, direction = ['East', 'West', 'North', 'South'], limit = 2) {
   let path = []
   src = {
     x: Number(piece.src.split('-')[0]),
@@ -818,7 +818,7 @@ short_path = (piece, board, direction = ['East', 'West', 'North', 'South'], limi
 }
 
 
-general_moves = (piece, board) => {
+function general_moves(piece, board) {
   let temp = point_generator(piece, board);
   src = {
     x: Number(piece.src.split('-')[0]),
@@ -836,7 +836,7 @@ general_moves = (piece, board) => {
   return temp;
 }
 
-get_array_top = (arr) => {
+function get_array_top(arr) {
   for (let i = arr.length; i >= 0; i--) {
     if (arr[i]) {
       return arr[i];
@@ -845,7 +845,7 @@ get_array_top = (arr) => {
   return null;
 }
 
-movment_limitation = (piece, top_piece, dst) => {
+function movment_limitation(piece, top_piece, dst) {
   if (top_piece.color === piece.color) {
     if (top_piece.name != 'marshal' && top_piece.tier != 3) {
       return [{
@@ -877,7 +877,7 @@ movment_limitation = (piece, top_piece, dst) => {
   }
 }
 
-draft_moves = (piece, board) => {
+function draft_moves(piece, board) {
   let temp = []
   let top;
   for (let r = [piece.color == 'w' ? 3 : 0]; r < [piece.color == 'w' ? 9 : 6]; r++) {

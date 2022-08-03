@@ -1,4 +1,19 @@
-class Desk {
+import {
+  Marshal,
+  Pawn,
+  Knight,
+  Samurai,
+  Spy,
+  Cannon,
+  Fortress,
+  Captain,
+  Archer,
+  Musketeer,
+  General,
+  Lieutenant,
+  Minor_General
+} from '../lib/pieces'
+export default class Desk {
   constructor(constant) {
     // constants +++++++++++++++++++++++++++++++++
     this.BLACK = 'b'
@@ -113,7 +128,7 @@ class Desk {
       let top, x, y, index;
 
       switch (Move.type) {
-        case gungi.PLACE:
+        case this.PLACE:
           top = this.get_top(Move.dst); // get top piece of destination
           if ((!top || (top.tier < 3)) &&
             this.stockpiles[Move.piece.color][Move.piece.name].length > 0
@@ -130,7 +145,7 @@ class Desk {
                   src: null
                 },
                 dst: Move.dst,
-                type: gungi.PLACE
+                type: this.PLACE
               }
             })
             // --------------------------
@@ -163,7 +178,7 @@ class Desk {
             return null;
           }
 
-          case gungi.MOVEMENT:
+          case this.MOVEMENT:
             x = Number(Move.piece.src.split('-')[0]);
             y = Number(Move.piece.src.split('-')[1])
 
@@ -181,7 +196,7 @@ class Desk {
                   src: Move.piece.src
                 },
                 dst: Move.dst,
-                type: gungi.MOVEMENT
+                type: this.MOVEMENT
               }
             })
 
@@ -206,7 +221,7 @@ class Desk {
             break;
 
 
-          case gungi.STACK:
+          case this.STACK:
             top = this.get_top(Move.dst); // get top piece of destination
 
             x = Number(Move.piece.src.split('-')[0]);
@@ -250,7 +265,7 @@ class Desk {
             };
             break
 
-          case gungi.ATTACK:
+          case this.ATTACK:
             // get top piece of destination -----------------------------
             top = this.get_top(Move.dst);
 
@@ -271,7 +286,7 @@ class Desk {
                   src: Move.piece.src
                 },
                 dst: Move.dst,
-                type: gungi.ATTACK
+                type: this.ATTACK
               }
             })
             // -----------------------------
@@ -314,7 +329,7 @@ class Desk {
         move: {
           piece: null,
           dst: null,
-          type: gungi.READY
+          type: this.READY
         }
       })
       if (this.state.b == 'game' && this.state.w == 'game') {
@@ -574,8 +589,8 @@ class Desk {
   }
 }
 
-Dict_Compare = (d1, d2) => {
-  for (i in d1) {
+function Dict_Compare (d1, d2) {
+  for (let i in d1) {
     if (d1[i] != d2[i]) {
       return false
     }

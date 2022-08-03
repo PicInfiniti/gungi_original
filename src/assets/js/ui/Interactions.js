@@ -1,7 +1,30 @@
+// libraries +++++++++++++++++++++++++++++++++++++
+import $ from "jquery"
+
+// libraries -------------------------------------
+
+import {
+  Reset_Sections,
+  Select_Square,
+  Show_Moves,
+  Movement_Possibility,
+  Update_Game,
+  update_tier
+} from './utils'
+
+import {
+  gungi
+} from './setup'
+
+import {Constants} from '../constants'
+
+
 var click_pos = {
   src: null,
   dst: null
 }
+
+var stockpile_selected = gungi.stockpiles.b.marshal[0]
 
 Select_Square("#bs-" + stockpile_selected.symbol, '#fc9803')
 
@@ -71,7 +94,7 @@ $("#Stack").click(function () {
   stockpile_selected = null;
   click_pos.src = null;
   click_pos.dst = null
-  WAR = null;
+  // WAR = null;
 });
 
 $("#save").click(function () {
@@ -93,8 +116,10 @@ $("#jsonfile").change((event) => {
   reader.readAsText(event.target.files[0]);
 
 });
+
 // ---------------------------------------
-$('.box').mousedown(function (event) {
+
+$('#board label').mousedown(function (event) {
   switch (event.which) {
     case 1: // grab left click
       Reset_Sections();
@@ -134,7 +159,7 @@ $('.box').mousedown(function (event) {
       }
 
 
-      Moves = gungi.moves(gungi.get_top($(this).attr("name")))
+      let Moves = gungi.moves(gungi.get_top($(this).attr("name")))
 
       if (Moves.length > 0) {
         click_pos.src = $(this).attr("name");

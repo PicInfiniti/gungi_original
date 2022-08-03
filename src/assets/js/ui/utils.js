@@ -1,7 +1,18 @@
-function turn_update() {
+// libraries +++++++++++++++++++++++++++++++++++++
+import $ from "jquery"
+
+// libraries -------------------------------------
+
+import {
+  gungi
+} from './setup'
+
+var tier_color = ["#000000", "#8a8a8a", "#fc9803", "#cc0000"]
+
+export function turn_update() {
   if (gungi.turn == "b") {
     $("#PB").css({
-      'box-shadow': '0px 0px 10px 3px #ad00ad'
+      'box-shadow': '0px 0px 1vh .5vh #ad00ad'
     })
     $("#PW").css({
       'box-shadow': '0px 0px 0px 0px #d1d1d1'
@@ -9,7 +20,7 @@ function turn_update() {
 
   } else {
     $("#PW").css({
-      'box-shadow': '0px 0px 10px 3px #ad00ad'
+      'box-shadow': '0px 0px 1vh .5vh #ad00ad'
     })
     $("#PB").css({
       'box-shadow': '0px 0px 0px 0px #d1d1d1'
@@ -39,22 +50,22 @@ function turn_update() {
   }
 }
 
-Put_Pieces = (e, type, color, tier) => {
+export function Put_Pieces (e, type, color, tier) {
   $(e).css({
     "color": tier_color[tier - 1],
-    "border-radius": "50px",
-    "outline": color == "b" ? "10px #171716 solid" : "10px #d1d1d1 solid",
-    "outline-offset": "-10px",
+    "border-radius": "50%",
+    "outline": color == "b" ? "1.5vh #171716 solid" : "1.5vh #d1d1d1 solid",
+    "outline-offset": "-1vh",
     "background-color": "white"
   });
   $(e).text(type);
 }
+ 
 
-
-function Remove_Pieces(e, type = '*', color = "white") {
+export function Remove_Pieces(e, type = '*', color = "white") {
   $(e).css({
     "color": '#ffcf9e00',
-    "border-radius": "5px",
+    "border-radius": "10%",
     "outline": "0px #999999 solid",
     "outline-offset": "0px",
     // "background-color": "#ffcf9e"
@@ -62,31 +73,31 @@ function Remove_Pieces(e, type = '*', color = "white") {
   $(e).text(type);
 }
 
-function Movement_Possibility(src, dst) {
+export function Movement_Possibility(src, dst) {
   let piece = gungi.get_top(src) 
-  Possibility = gungi.moves(piece)
+  let Possibility = gungi.moves(piece)
   return Possibility.filter(move => move.dst == dst)
 }
 
-function Reset_Sections(e = [".box", ".tier", ".stockpile", ".captured"]) {
+export function Reset_Sections(e = ["#board label", ".tier", ".stockpile", ".captured"]) {
   $.each(e, function (index, item) {
     $(item).css({
-      "border": "1px solid #999999",
+      border: ".2vh solid #999999",
       "box-shadow": "0px 0px 0px 0px #999999"
     }); // change color of all boxes
   });
   $("#War").fadeOut();
-  WAR = null;
+  // WAR = null;
 }
 
-function Select_Square(e, color) {
+export function Select_Square(e, color) {
   $(e).css({
-    "border": "1px solid " + color,
-    "box-shadow": "0px 0px 5px 1px " + color
+    border: ".2vh solid " + color,
+    "box-shadow": "0px 0px 1vh .2vh " + color,
   }); // change color of current box
 }
 
-function Stockpile_update(color) {
+export function Stockpile_update(color) {
   Reset_Sections();
   if (color == 'b') {
     black_stockpile[stockpile_selected]--;
@@ -102,8 +113,8 @@ function Stockpile_update(color) {
 }
 
 
-function Update_Game(Move = {piece:null, dst:null, type:constant.PLACE}) {
-  res = gungi.move(Move);
+export function Update_Game(Move = {piece:null, dst:null, type:constant.PLACE}) {
+  let res = gungi.move(Move);
   turn_update();
   if (res) {
     switch (Move.type) {
@@ -113,12 +124,12 @@ function Update_Game(Move = {piece:null, dst:null, type:constant.PLACE}) {
         
         if (Move.piece.color == gungi.BLACK) {
           
-          temp = $("#bs-" + Move.piece.symbol).find("sub").text() - 1
+          let temp = $("#bs-" + Move.piece.symbol).find("sub").text() - 1
           $("#bs-" + Move.piece.symbol).find("sub").text(temp)
           Select_Square("#ws-" + Move.piece.symbol, '#fc9803')
 
         } else {
-          temp = $("#ws-" + Move.piece.symbol).find("sub").text() - 1
+          let temp = $("#ws-" + Move.piece.symbol).find("sub").text() - 1
           $("#ws-" + Move.piece.symbol).find("sub").text(temp)
           Select_Square("#bs-" + Move.piece.symbol, '#fc9803')
         }
@@ -157,7 +168,7 @@ function Update_Game(Move = {piece:null, dst:null, type:constant.PLACE}) {
   }
 }
 
-function update_board() {
+export function update_board() {
   $.each(gungi.board, function (x, row) {
     $.each(row, function (y, column) {
       $.each(column, function (z, piece) {
@@ -180,7 +191,7 @@ function update_board() {
   }
 }
 
-function update_tier(pos) {
+export function update_tier(pos) {
   let item = gungi.get(pos) 
   $.each(item, function (index, item) {
     if (item) {
@@ -191,35 +202,35 @@ function update_tier(pos) {
   });
 }
 
-function saveText(text, filename) {
+export function saveText(text, filename) {
   var a = document.createElement('a');
   a.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(text));
   a.setAttribute('download', filename);
   a.click()
 }
 
-function Check(){
+export function Check(){
   let piece = gungi.marshals[gungi.turn]
   $('#b-' + piece.src).css({
-    "border": "1px solid red",
+    "border": ".2vh solid red",
     "box-shadow": "0px 0px 5px 1px red",
     "color": "red"
   }); // change color of current box
 }
 
-Show_Moves = (gungi, tag)=>{
+export function Show_Moves (gungi, tag){
   Moves = gungi.moves(gungi.get_top())
   if (Moves.length > 0) {
     $.each(Moves, function (_, item) {
       if (item.type == 'move') {
         $('#m-' + item.dst).css({
-          "border": "1px solid #009699",
-          "box-shadow": "0px 0px 5px 1px #009699",
+          "border": ".2vh solid #009699",
+          "box-shadow": "0px 0px 1vh .2vh #009699",
         });
       } else {
         $('#m-' + item.dst).css({
-          "border": "1px solid red",
-          "box-shadow": "0px 0px 5px 1px red"
+          "border": ".2vh solid red",
+          "box-shadow": "0px 0px 1vh .2vh red"
         });
       }
 
@@ -227,7 +238,7 @@ Show_Moves = (gungi, tag)=>{
   }
 }
 
-function load_history(history) {
+export function load_history(history) {
   var interval = 500;
   history.forEach(function (el, index) {
     setTimeout(function () {

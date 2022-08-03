@@ -1,4 +1,4 @@
-const Constants = {
+export const Constants = {
   BLACK         : 'b',
   WHITE         : 'w',
   DRAFT         : 'draft',
