@@ -82,8 +82,8 @@ export function Movement_Possibility(src, dst) {
 export function Reset_Sections(e = ["#board label", ".tier", ".stockpile", ".captured"]) {
   $.each(e, function (index, item) {
     $(item).css({
-      border: ".2vh solid #999999",
-      "box-shadow": "0px 0px 0px 0px #999999"
+      border: "",
+      "box-shadow": ""
     }); // change color of all boxes
   });
   $("#War").fadeOut();

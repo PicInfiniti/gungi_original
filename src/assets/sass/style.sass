@@ -53,7 +53,6 @@ a
   grid-template-columns: repeat(2, 1fr)
   grid-template-rows: repeat(2, 1fr)
 
-  border: min(.2vh, .2vw) solid #999999
   
   aspect-ratio: 1
   
@@ -184,8 +183,6 @@ a
       grid-template-rows: repeat(1, 1fr)
       margin-top: -3vh
 
-      
-      
       [name=fake]
         grid-column: 1
         grid-row: 1
@@ -200,8 +197,8 @@ a
           display: flex
           justify-content: center
           align-items: center
-          width: min(8vh, 8vw)
-          height: min(8vh, 8vw)
+          width: 8vh
+          height: 8vh
           line-height: min(7vh, 7vw)
           font-size: min(5vh, 5vw)
           font-weight: bold
@@ -222,8 +219,8 @@ a
           display: flex
           justify-content: center
           align-items: center
-          width: min(8vh, 8vw)
-          height: min(8vh, 8vw)
+          width: 8vh
+          height: 8vh
           line-height: min(7vh, 7vw)
           font-size: min(5vh, 5vw)
           font-weight: bold
@@ -236,16 +233,20 @@ a
     font-size: 3vh
     line-height: 4vh
     padding-bottom: 1vh
+    display: flex
+    flex-wrap: wrap
+
     h3
       margin-top: .5vh
       margin-bottom: 2vh
+
     [name=pile]
       display: flex
       flex-wrap: wrap
       
       label
         padding: .5vh
-        margin: .5vh
+        margin: .3vh
         text-align: center
         width: 4vh
         height: 4vh
@@ -253,6 +254,7 @@ a
           color: red
           border: .1vh solid #fc9803
           box-shadow: 0px 0px 1vh .2vh #fc9803
+          font-weight: bold
           sub
             font-size: 1.5vh
             color: black
@@ -262,10 +264,10 @@ a
           font-size: 1.5vh
           color: red
           font-weight: bold
-  
-      
+   
     .army
-      float: right
+      width: 100%
+      text-align: right
       color: rgb(0, 56, 24)
 
   .tooltip
@@ -334,29 +336,49 @@ a
 #Captured
   grid-column: 1/10
   grid-row: 2
-  font-size: min(3vh, 3vw)
-  line-height: 1.5vh
-  padding: min(1vh, 1vw)
-  label
-    aspect-ratio: 1
-    width: min(8vh, 8vw)
-    height: min(8vh, 8vw)
-    box-sizing: border-box
-    text-align: center
-    font-size: min(4vh, 4vw)
+  font-size: 3vh
+  margin: min(1vh, 1vw)
+  line-height: 4vh
+  margin-top: -3vh
+  [name=pile]
+    display: flex
+    flex-wrap: wrap
+    margin-top: -2vh
+    label
+      padding: .5vh
+      margin: .5vh
+      text-align: center
+      width: 4vh
+      height: 4vh
 
-  div:first-child
-    padding-bottom: min(1vh, 1vw)
+      &:hover
+        color: white
+        border: .1vh solid black
+        background-color: black
+        box-shadow: 0px 0px 1vh .2vh black
+        font-weight: bold
+        sub
+          font-size: 1.5vh
+          color: red
+          font-weight: bold
 
-  .buttonBox
-    float: right
+      sub
+        font-size: 1.5vh
+        color: red
+        font-weight: bold
 
-    button
-      background-color: transparent
-      color: green
-      border: min(.2vh, .2vw) solid green
-      border-radius: min(1vh, 1vw)
-      font-size: min(3vh, 3vw)
+    div:first-child
+      padding-bottom: min(1vh, 1vw)
+
+    .buttonBox
+      float: right
+
+      button
+        background-color: transparent
+        color: green
+        border: min(.2vh, .2vw) solid green
+        border-radius: min(1vh, 1vw)
+        font-size: min(3vh, 3vw)
 
 
 

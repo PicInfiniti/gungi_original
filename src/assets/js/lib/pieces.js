@@ -744,7 +744,7 @@ function point_generator(piece, board, points = [
 
 function short_path(piece, board, direction = ['East', 'West', 'North', 'South'], limit = 2) {
   let path = []
-  src = {
+  let src = {
     x: Number(piece.src.split('-')[0]),
     y: Number(piece.src.split('-')[1])
   }
