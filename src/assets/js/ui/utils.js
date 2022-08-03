@@ -11,18 +11,18 @@ var tier_color = ["#000000", "#8a8a8a", "#fc9803", "#cc0000"]
 
 export function turn_update() {
   if (gungi.turn == "b") {
-    $("#PB").css({
-      'box-shadow': '0px 0px 1vh .5vh #ad00ad'
+    $("#PB label").css({
+      'box-shadow': '0px 0px 1.5vh 1.2vh #ad00ad'
     })
-    $("#PW").css({
+    $("#PW label").css({
       'box-shadow': '0px 0px 0px 0px #d1d1d1'
     })
 
   } else {
-    $("#PW").css({
-      'box-shadow': '0px 0px 1vh .5vh #ad00ad'
+    $("#PW label").css({
+      'box-shadow': '0px 0px 1.5vh 1.2vh #ad00ad'
     })
-    $("#PB").css({
+    $("#PB label").css({
       'box-shadow': '0px 0px 0px 0px #d1d1d1'
     })
   }
@@ -32,9 +32,10 @@ export function turn_update() {
     $("#b-army").css({
       'color': 'red'
     })
-  } else {
+  }
+  if (gungi.army_size['b'] > 0) {
     $("#b-army").css({
-      'color': 'rgb(75, 0, 126)'
+      'color': 'rgb(0, 56, 24)'
     })
   }
 
@@ -43,14 +44,15 @@ export function turn_update() {
     $("#w-army").css({
       'color': 'red'
     })
-  } else {
+  }
+  if (gungi.army_size['w'] > 0) {
     $("#w-army").css({
-      'color': 'rgb(75, 0, 126)'
+      'color': 'rgb(0, 56, 24)'
     })
   }
 }
 
-export function Put_Pieces (e, type, color, tier) {
+export function Put_Pieces(e, type, color, tier) {
   $(e).css({
     "color": tier_color[tier - 1],
     "border-radius": "50%",
@@ -60,7 +62,7 @@ export function Put_Pieces (e, type, color, tier) {
   });
   $(e).text(type);
 }
- 
+
 
 export function Remove_Pieces(e, type = '*', color = "white") {
   $(e).css({
@@ -74,7 +76,7 @@ export function Remove_Pieces(e, type = '*', color = "white") {
 }
 
 export function Movement_Possibility(src, dst) {
-  let piece = gungi.get_top(src) 
+  let piece = gungi.get_top(src)
   let Possibility = gungi.moves(piece)
   return Possibility.filter(move => move.dst == dst)
 }
@@ -113,25 +115,28 @@ export function Stockpile_update(color) {
 }
 
 
-export function Update_Game(Move = {piece:null, dst:null, type:constant.PLACE}) {
+export function Update_Game(Move = {
+  piece: null,
+  dst: null,
+  type: constant.PLACE
+}) {
   let res = gungi.move(Move);
   turn_update();
   if (res) {
     switch (Move.type) {
       case gungi.PLACE:
-        Reset_Sections();
         update_board();
-        
+
         if (Move.piece.color == gungi.BLACK) {
-          
-          let temp = $("#bs-" + Move.piece.symbol).find("sub").text() - 1
-          $("#bs-" + Move.piece.symbol).find("sub").text(temp)
-          Select_Square("#ws-" + Move.piece.symbol, '#fc9803')
+
+          let temp = $(`#bs-${Move.piece.symbol} sub`).text() - 1
+          $(`#bs-${Move.piece.symbol} sub`).text(temp != 0 ? temp : '')
+          // Select_Square(`#ws-${Move.piece.symbol}`, '#fc9803')
 
         } else {
-          let temp = $("#ws-" + Move.piece.symbol).find("sub").text() - 1
-          $("#ws-" + Move.piece.symbol).find("sub").text(temp)
-          Select_Square("#bs-" + Move.piece.symbol, '#fc9803')
+          let temp = $(`#ws-${Move.piece.symbol}`).find("sub").text() - 1
+          $(`#ws-${Move.piece.symbol} sub`).text(temp != 0 ? temp : '')
+          // Select_Square(`#bs-${Move.piece.symbol}`, '#fc9803')
         }
 
         break;
@@ -192,7 +197,7 @@ export function update_board() {
 }
 
 export function update_tier(pos) {
-  let item = gungi.get(pos) 
+  let item = gungi.get(pos)
   $.each(item, function (index, item) {
     if (item) {
       Put_Pieces("#t-" + index, item.symbol, item.color, index + 1)
@@ -209,7 +214,7 @@ export function saveText(text, filename) {
   a.click()
 }
 
-export function Check(){
+export function Check() {
   let piece = gungi.marshals[gungi.turn]
   $('#b-' + piece.src).css({
     "border": ".2vh solid red",
@@ -218,7 +223,7 @@ export function Check(){
   }); // change color of current box
 }
 
-export function Show_Moves (gungi, tag){
+export function Show_Moves(gungi, tag) {
   Moves = gungi.moves(gungi.get_top())
   if (Moves.length > 0) {
     $.each(Moves, function (_, item) {

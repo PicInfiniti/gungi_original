@@ -29,23 +29,12 @@ var stockpile = {
 }
 
 $.each(stockpile, function (key, value) {
-  $("#bs-" + key).append("<sub>" + value + "</sub>")
+  $(`#bs-${key}`).append("<sub>" + value + "</sub>")
+  $(`#ws-${key}`).append("<sub>" + value + "</sub>")
+
+  $(`#bc-${key}`).append("<sub>0</sub>")
+  $(`#wc-${key}`).append("<sub>0</sub>")
 });
-
-$.each(stockpile, function (key, value) {
-  $("#ws-" + key).append("<sub>" + value + "</sub>")
-});
-
-
-$.each(stockpile, function (key, value) {
-  $("#bc-" + key).append("<sub>0</sub>")
-});
-
-$.each(stockpile, function (key, value) {
-  $("#wc-" + key).append("<sub>0</sub>")
-});
-
-
 
 
 for (let i = 0; i < 9; i++) {

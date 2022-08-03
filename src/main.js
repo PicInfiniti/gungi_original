@@ -13,12 +13,20 @@ import './assets/sass/style.sass'
 document.addEventListener('contextmenu', event => event.preventDefault());
 
 function capitalizeFirstLetter(string) {
-  return string.charAt(0).toUpperCase() + string.slice(1);
+  let temp = string.charAt(0).toUpperCase() + string.slice(1)
+  return temp.replace('_', ' ');
 }
 
 $('.stockpile').hover((event) => {
-    $('.tooltip').show()
+    let color = $(event.target).attr('id')[0]
+    if(color=='b') {
+      $('#b-army .tooltip').show()
       .text(capitalizeFirstLetter(event.target.getAttribute('dcr')))
+    } else {
+      $('#w-army .tooltip').show()
+      .text(capitalizeFirstLetter(event.target.getAttribute('dcr')))
+    }
+
   },
   (event) => {
     $('.tooltip').hide()
