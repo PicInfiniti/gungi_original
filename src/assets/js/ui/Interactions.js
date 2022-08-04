@@ -162,28 +162,7 @@ $('#board label').mousedown(function (event) {
       }
 
 
-      let Moves = gungi.moves(gungi.get_top($(this).attr("name")))
-
-      if (Moves.length > 0) {
-        click_pos.src = $(this).attr("name");
-        $.each(Moves, function (_, item) {
-          if (item.type == 'move') {
-            $('#b-' + item.dst).css({
-              "border": "1px solid #009699",
-              "box-shadow": "0px 0px 5px 1px #009699",
-            });
-          } else {
-            $('#b-' + item.dst).css({
-              "border": "1px solid red",
-              "box-shadow": "0px 0px 5px 1px red"
-            });
-          }
-
-        });
-      }
-
-
-
+      Show_Moves(gungi, $(this).attr("name"), click_pos)
       // --------------------------------------------------------
       break;
 

@@ -223,19 +223,20 @@ export function Check(color) {
   }); // change color of current box
 }
 
-export function Show_Moves(gungi, tag) {
-  Moves = gungi.moves(gungi.get_top())
+export function Show_Moves(gungi, tag, click_pos) {
+  let Moves = gungi.moves(gungi.get_top(tag))
   if (Moves.length > 0) {
+    click_pos.src = tag;
     $.each(Moves, function (_, item) {
       if (item.type == 'move') {
-        $('#m-' + item.dst).css({
+        $('#b-' + item.dst).css({
           "border": ".2vh solid #009699",
           "box-shadow": "0px 0px 1vh .2vh #009699",
         });
       } else {
-        $('#m-' + item.dst).css({
+        $('#b-' + item.dst).css({
           "border": ".2vh solid red",
-          "box-shadow": "0px 0px 1vh .2vh red"
+          "box-shadow": "0px 0px 1vh .3vh red"
         });
       }
 
