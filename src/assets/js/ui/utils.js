@@ -191,8 +191,8 @@ export function update_board() {
       });
     });
   });
-  if (gungi.in_check()[gungi.turn]) {
-    Check();
+  if (gungi.in_check()['b'] || gungi.in_check()['w']) {
+    Check(gungi.in_check()['b'] ? 'b' : 'w');
   }
 }
 
@@ -214,11 +214,11 @@ export function saveText(text, filename) {
   a.click()
 }
 
-export function Check() {
-  let piece = gungi.marshals[gungi.turn]
+export function Check(color) {
+  let piece = gungi.marshals[color]
   $('#b-' + piece.src).css({
     "border": ".2vh solid red",
-    "box-shadow": "0px 0px 5px 1px red",
+    "box-shadow": "0px 0px 1vh .3vh red",
     "color": "red"
   }); // change color of current box
 }

@@ -52,6 +52,7 @@ $(".tier").click(function () {
 });
 
 $("#ReadyButton button").click(function () {
+  console.log(gungi.in_check())
   Reset_Sections();
   gungi.move({
     src: null,
@@ -121,6 +122,7 @@ $("#jsonfile").change((event) => {
 // ---------------------------------------
 
 $('#board label').mousedown(function (event) {
+  console.log(gungi.in_check())
   switch (event.which) {
     case 1: // grab left click
       Reset_Sections();
