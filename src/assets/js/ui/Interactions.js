@@ -9,7 +9,8 @@ import {
   Show_Moves,
   Movement_Possibility,
   Update_Game,
-  update_tier
+  update_tier,
+  turn_update
 } from './utils'
 
 import {
@@ -50,7 +51,7 @@ $(".tier").click(function () {
   }
 });
 
-$("#myButton").click(function () {
+$("#ReadyButton button").click(function () {
   Reset_Sections();
   gungi.move({
     src: null,
@@ -80,7 +81,7 @@ $("#Attack").click(function () {
   stockpile_selected = null;
   click_pos.src = null;
   click_pos.dst = null
-  WAR = null;
+  // WAR = null;
 });
 
 $("#Stack").click(function () {

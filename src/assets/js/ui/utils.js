@@ -153,15 +153,15 @@ export function Update_Game(Move = {
 
       case gungi.ATTACK:
         update_board();
-        temp = gungi.captured;
+        let temp = gungi.captured;
         temp = temp[temp.length - 1]
         if (temp.color == gungi.BLACK) {
-          num = Number($("#bc-" + temp.symbol).find("sub").text()) + 1
+          let num = Number($("#bc-" + temp.symbol).find("sub").text()) + 1
           $("#bc-" + temp.symbol).find("sub").text(num)
           Select_Square("#bc-" + temp.symbol, '#000000')
 
         } else {
-          num = Number($("#wc-" + temp.symbol).find("sub").text()) + 1
+          let num = Number($("#wc-" + temp.symbol).find("sub").text()) + 1
           $("#wc-" + temp.symbol).find("sub").text(num)
           Select_Square("#wc-" + temp.symbol, '#000000')
         }
