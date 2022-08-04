@@ -574,7 +574,7 @@ export class Minor_General {
 // related functions
 function path_generator(piece, board, direction = ['East']) {
   let path = []
-  src = {
+  let src = {
     x: Number(piece.src.split('-')[0]),
     y: Number(piece.src.split('-')[1])
   }
@@ -639,7 +639,7 @@ function path_generator(piece, board, direction = ['East']) {
 
 
       case 'NE':
-        for (x = src.x + 1, y = src.y + 1; x < 9 && y < 9; x++, y++) {
+        for (let x = src.x + 1, y = src.y + 1; x < 9 && y < 9; x++, y++) {
           if (board[x][y][0]) {
             let temp = get_array_top(board[x][y])
             path = path.concat(movment_limitation(piece, temp, x + '-' + y))
@@ -652,7 +652,7 @@ function path_generator(piece, board, direction = ['East']) {
           })
         }
 
-        for (x = src.x - 1, y = src.y - 1; x >= 0 && y >= 0; x--, y--) {
+        for (let x = src.x - 1, y = src.y - 1; x >= 0 && y >= 0; x--, y--) {
           if (board[x][y][0]) {
             let temp = get_array_top(board[x][y])
             path = path.concat(movment_limitation(piece, temp, x + '-' + y))
@@ -670,7 +670,7 @@ function path_generator(piece, board, direction = ['East']) {
 
 
       case 'SE':
-        for (x = src.x + 1, y = src.y - 1; x < 9 && y >= 0; x++, y--) {
+        for (let x = src.x + 1, y = src.y - 1; x < 9 && y >= 0; x++, y--) {
           if (board[x][y][0]) {
             let temp = get_array_top(board[x][y])
             path = path.concat(movment_limitation(piece, temp, x + '-' + y))
@@ -683,7 +683,7 @@ function path_generator(piece, board, direction = ['East']) {
           })
         }
 
-        for (x = src.x - 1, y = src.y + 1; x >= 0 && y < 9; x--, y++) {
+        for (let x = src.x - 1, y = src.y + 1; x >= 0 && y < 9; x--, y++) {
           if (board[x][y][0]) {
             let temp = get_array_top(board[x][y])
             path = path.concat(movment_limitation(piece, temp, x + '-' + y))
@@ -820,11 +820,11 @@ function short_path(piece, board, direction = ['East', 'West', 'North', 'South']
 
 function general_moves(piece, board) {
   let temp = point_generator(piece, board);
-  src = {
+  let src = {
     x: Number(piece.src.split('-')[0]),
     y: Number(piece.src.split('-')[1])
   }
-  x = piece.color == 'b' ? 2 : -2
+  let x = piece.color == 'b' ? 2 : -2
   for (let i = -1; i < 2; i++) {
     if (src.x + (x / 2) < 9 && src.x + (x / 2) > 0 && src.y + i < 9 && src.y + i > 0 && !board[src.x + (x / 2)][src.y + i][0]) {
       temp = temp.concat(point_generator(piece, board, [
