@@ -125,6 +125,7 @@ $('#board label').mousedown(function (event) {
     case 1: // grab left click
       Reset_Sections();
       Select_Square(this, 'green');
+      
       click_pos.dst = $(this).attr("name");
 
       if (stockpile_selected) {
@@ -144,7 +145,6 @@ $('#board label').mousedown(function (event) {
       update_tier($(this).attr("name"));
 
       let Movement = Movement_Possibility(click_pos.src, click_pos.dst)
-
       if (Movement.length == 1) {
         Update_Game({
           piece: gungi.get_top(click_pos.src),

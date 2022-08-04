@@ -122,6 +122,7 @@ export default class Desk {
   }
 
   move = (Move) => { // piece is an object
+
     if (this.moves(Move.piece).filter((move) => {
         return Dict_Compare(move, Move)
       }).length == 1) {
@@ -130,8 +131,11 @@ export default class Desk {
       switch (Move.type) {
         case this.PLACE:
           top = this.get_top(Move.dst); // get top piece of destination
+          if (this.count<2 && Move.piece.name!='marshal'){
+            return null;
+          }
           if ((!top || (top.tier < 3)) &&
-            this.stockpiles[Move.piece.color][Move.piece.name].length > 0
+            this.stockpiles[Move.piece.color][Move.piece.name].length > 0 
           ) { // if its not empty an less than 3 piece and have possible move there you can place
 
             // add to history -----------------------
