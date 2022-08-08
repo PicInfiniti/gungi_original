@@ -48,3 +48,14 @@ for (let i = 0; i < 9; i++) {
     $('#board').append(`<label type='text' id='b-${i}-${j}' name='${i}-${j}'>${i}${j}</label>`)
   }
 }
+
+for (let i = 0; i < 5; i++) {
+  if (i==0){
+    $('#result').append(`<label type='text' id='r-${i}' name='${i}'>Check Mate!!!</label>`)
+  } else if (i<4) {
+    $('#result').append(`<label type='text' id='r-${i}' name='${i}'>${i}</label>`)
+  } else {
+    $('#result').append(`<label type='text' id='r-${i}' name='${i}'><span>Black</span>&nbsp;Wins...</label>`)
+  }
+}
+

@@ -58,10 +58,39 @@ export function Put_Pieces(e, type, color, tier) {
     "border-radius": "50%",
     "outline": color == "b" ? "1.5vh #171716 solid" : "1.5vh #d1d1d1 solid",
     "outline-offset": "-1vh",
-    "background-color": "white"
+    // "background-color": "white"
   });
   $(e).text(type);
 }
+
+export function CheckMate(type, color, tier) {
+  $('#r-2').css({
+    color: tier_color[tier - 1],
+    "border-radius": "50%",
+    outline: color == "b" ? "2vh #171716 solid" : "2vh #d1d1d1 solid",
+    "outline-offset": "-1vh",
+    opacity: 1
+    // "background-color": "white"
+  });
+  $('#r-0').css({
+    opacity: 1
+    // "background-color": "white"
+  });
+  $('#r-4').css({
+    opacity: 1
+    // "background-color": "white"
+  });
+
+  if(color=='b'){
+    $('#r-4 span').text('Black');
+  } else {
+    $('#r-4 span').text('White');
+  }
+
+  $('#r-2').text(type);
+}
+
+
 
 
 export function Remove_Pieces(e, type = '*', color = "white") {
@@ -89,6 +118,11 @@ export function Reset_Sections(e = ["#board label", ".tier", ".stockpile", ".cap
     }); // change color of all boxes
   });
   $("#War").fadeOut();
+  if($('#r-2').css('opacity')==1){
+    $('#r-0').css({'opacity':.6})
+    $('#r-2').css({'opacity':.6})
+    $('#r-4').css({'opacity':.6})
+  }
   // WAR = null;
 }
 
@@ -215,15 +249,6 @@ export function saveText(text, filename) {
 }
 
 export function Check(color) {
-  let piece = gungi.marshals[color]
-  $('#b-' + piece.src).css({
-    "border": ".2vh solid red",
-    "box-shadow": "0px 0px 1vh .3vh red",
-    "color": "red"
-  }); // change color of current box
-}
-
-export function CheckMate(color) {
   let piece = gungi.marshals[color]
   $('#b-' + piece.src).css({
     "border": ".2vh solid red",

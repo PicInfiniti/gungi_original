@@ -11,7 +11,8 @@ import {
   Update_Game,
   update_tier,
   turn_update,
-  Check
+  Check,
+  CheckMate
 } from './utils'
 
 import {
@@ -27,6 +28,8 @@ var click_pos = {
   src: null,
   dst: null
 }
+
+var Click = true
 
 var stockpile_selected = gungi.stockpiles.b.marshal[0]
 
@@ -78,6 +81,10 @@ $("#ReadyButton button").click(function () {
     type: gungi.READY
   });
   turn_update();
+  if ($("#ReadyButton button").text() == 'Resign') {
+    CheckMate(Constants.MARSHAL, gungi.turn == 'w' ? 'b' : 'w', 1)
+    Click = false
+  }
   if (gungi.phase == 'game') {
     $('#PHASE').text('Game Phase')
     $("#ReadyButton button")
@@ -105,6 +112,10 @@ $("#ReadyButton button").click(function () {
   click_pos = {
     src: null,
     dst: null
+  }
+
+  if (gungi.in_checkmate() && $('#r-2').css('opacity') != .6) {
+    CheckMate(Constants.MARSHAL, gungi.turn, 1)
   }
 });
 
@@ -161,50 +172,52 @@ $("#jsonfile").change((event) => {
 $('#board label').mousedown(function (event) {
   console.log(gungi.in_checkmate())
   Reset_Sections();
-  if(!gungi.in_checkmate()){
+  if (!gungi.in_checkmate()) {
     switch (event.which) {
       case 1: // grab left click
         Select_Square(this, 'green');
+
+        if(Click){
+          click_pos.dst = $(this).attr("name");
+
+          if (stockpile_selected) {
+            Update_Game({
+              piece: stockpile_selected,
+              dst: click_pos.dst,
+              type: Constants.PLACE
+            });
+            update_tier(click_pos.dst);
+            stockpile_selected = null;
+            click_pos.src = null;
+            click_pos.dst = null
   
-        click_pos.dst = $(this).attr("name");
+            break;
+          }
   
-        if (stockpile_selected) {
-          Update_Game({
-            piece: stockpile_selected,
-            dst: click_pos.dst,
-            type: Constants.PLACE
-          });
-          update_tier(click_pos.dst);
-          stockpile_selected = null;
-          click_pos.src = null;
-          click_pos.dst = null
+          update_tier($(this).attr("name"));
   
-          break;
+          let Movement = Movement_Possibility(click_pos.src, click_pos.dst)
+          if (Movement.length == 1) {
+            Update_Game({
+              piece: gungi.get_top(click_pos.src),
+              dst: click_pos.dst,
+              type: Movement[0].type
+            })
+            update_tier(click_pos.dst);
+            stockpile_selected = null;
+            click_pos.src = null;
+            click_pos.dst = null
+          } else if (Movement.length == 2) {
+            $("#War").fadeIn();
+          }
+  
+  
+          Show_Moves(gungi, $(this).attr("name"), click_pos)
         }
-  
-        update_tier($(this).attr("name"));
-  
-        let Movement = Movement_Possibility(click_pos.src, click_pos.dst)
-        if (Movement.length == 1) {
-          Update_Game({
-            piece: gungi.get_top(click_pos.src),
-            dst: click_pos.dst,
-            type: Movement[0].type
-          })
-          update_tier(click_pos.dst);
-          stockpile_selected = null;
-          click_pos.src = null;
-          click_pos.dst = null
-        } else if (Movement.length == 2) {
-          $("#War").fadeIn();
-        }
-  
-  
-        Show_Moves(gungi, $(this).attr("name"), click_pos)
         // --------------------------------------------------------
         break;
-  
-  
+
+
       default:
         console.log("You have a strange Mouse!");
         break;
@@ -216,5 +229,7 @@ $('#board label').mousedown(function (event) {
   }
   // console.log(gungi.state)
   // console.log(gungi.in_check())
-  // console.log(gungi.in_checkmate())
+  if (gungi.in_checkmate() && $('#r-2').css('opacity') != .6) {
+    CheckMate(Constants.MARSHAL, gungi.turn, 1)
+  }
 });

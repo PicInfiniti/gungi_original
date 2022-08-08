@@ -62,9 +62,8 @@ a
     padding: min(2vh, 2vw)
     display: grid
     grid-template-columns: repeat(9, 1fr)
-    column-gap: min(1vh, 1vw)
-    row-gap: min(1vh, 1vw)
-    z-index: -1
+    grid-gap: min(1vh, 1vw)
+    z-index: 0
     
     label
       display: flex
@@ -88,8 +87,8 @@ a
     padding: min(2vh, 2vw)
     display: grid
     grid-template-columns: repeat(9, 1fr)
-    column-gap: min(1vh, 1vw)
-    row-gap: min(1vh, 1vw)
+    grid-gap: min(1vh, 1vw)
+    z-index: 2
     label
       display: flex
       justify-content: center
@@ -106,7 +105,68 @@ a
       &:hover
         border: .2vh solid green
         box-shadow: 0px 0px 1vh .5vh green
-      
+  
+  #result
+    grid-column: 1
+    grid-row: 1
+    padding: min(2vh, 2vw)
+    display: grid
+    grid-template-columns: repeat(3, 1fr)
+    grid-template-rows: repeat(3, 1fr)
+    grid-gap: min(4.5vh, 4.5vw)
+    z-index: 1
+    
+    #r-0
+      grid-column: 1 / 4
+      grid-row: 1
+      display: flex
+      justify-content: center
+      align-items: center
+      line-height: min(7vh, 7vw)
+      font-size: calc(2 * min(5vh, 5vw))
+      font-weight: bold
+      opacity: 0
+
+    #r-1, #r-3
+      grid-row: 2
+      display: flex
+      justify-content: center
+      align-items: center
+      aspect-ratio: 1
+      width: calc(3 * min(8vh, 8vw))
+      height: calc(3 * min(8vh, 8vw))
+      line-height: min(7vh, 7vw)
+      font-size: calc(3 * min(5vh, 5vw))
+      font-weight: bold
+      opacity: 0
+
+    #r-2
+      grid-row: 2
+      display: flex
+      justify-content: center
+      align-items: center
+      aspect-ratio: 1
+      width: calc(3 * min(8vh, 8vw))
+      height: calc(3 * min(8vh, 8vw))
+      line-height: min(7vh, 7vw)
+      font-size: calc(4 * min(5vh, 5vw))
+      font-weight: bold
+      box-shadow: 0px 0px 5vh 1vh #fc9803
+      border: .2vh solid #999999
+      opacity: 0
+
+    #r-4
+      grid-column: 1 / 4
+      grid-row: 3
+      display: flex
+      justify-content: center
+      align-items: center
+      line-height: min(7vh, 7vw)
+      font-size: calc(2 * min(5vh, 5vw))
+      font-weight: bold
+      opacity: 0
+
+
 
 .info
   padding: min(1vh, 1vw)
