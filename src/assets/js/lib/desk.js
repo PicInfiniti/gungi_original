@@ -13,6 +13,7 @@ import {
   Lieutenant,
   Minor_General
 } from '../lib/pieces'
+import { gungi } from '../ui/setup'
 export default class Desk {
   constructor(constant) {
     // constants +++++++++++++++++++++++++++++++++
@@ -49,7 +50,7 @@ export default class Desk {
 
     // -----------------------------------------
     this.board = this.board_generator(this.ROW, this.COLUMN)
-    this.board_1D = []
+    this.board_1D = [] // one dimension board
     this.board_temp;
     this.phase = this.DRAFT
     this.turn = this.BLACK
@@ -448,7 +449,8 @@ export default class Desk {
   }
 
   in_checkmate = (board = this.board) => {
-    return this.in_check(board) && this.in_stalemate(board)
+    let check = this.in_check(board)
+    return ((check['w'] || check['b'])&& this.in_stalemate(board)) || (gungi.turn == 'w' && check['b'])
   }
 
   in_stalemate = (board = this.board) => {
@@ -494,13 +496,16 @@ export default class Desk {
     }
 
     if (move.piece.name == 'fortress' && move.type == 'stack') {
+      // prevent fortress stack
       legal.push(false)
     }
     if (move.piece.name == 'fortress' && move.type == 'place' && this.get_top(move.dst)) {
+      // prevent fortress stack
       legal.push(false)
     }
 
     if (this.state[move.piece.color] == 'draft') {
+      // prevent placement on middle of board during draft phase
       if (move.piece.color == 'b') {
         legal.push(x < 3)
       } else {
@@ -508,6 +513,7 @@ export default class Desk {
       }
     }
     if (this.phase == 'draft') {
+      // in draft phase you can just place
       legal.push(move.type == 'place')
     }
 
