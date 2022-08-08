@@ -68,6 +68,10 @@ $(".tier").click(function () {
 
 });
 
+$("#result").click(function () {
+  Reset_Sections();
+});
+
 $("#ReadyButton button").click(function () {
   Reset_Sections();
   if (gungi.in_check()['b'] || gungi.in_check()['w']) {
@@ -81,7 +85,7 @@ $("#ReadyButton button").click(function () {
     type: gungi.READY
   });
   turn_update();
-  if ($("#ReadyButton button").text() == 'Resign') {
+  if ($("#ReadyButton button").text() == 'Resign' && $('#r-2').css('opacity') != .6) {
     CheckMate(Constants.MARSHAL, gungi.turn == 'w' ? 'b' : 'w', 1)
     Click = false
   }

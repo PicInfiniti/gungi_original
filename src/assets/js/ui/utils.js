@@ -58,7 +58,7 @@ export function Put_Pieces(e, type, color, tier) {
     "border-radius": "50%",
     "outline": color == "b" ? "1.5vh #171716 solid" : "1.5vh #d1d1d1 solid",
     "outline-offset": "-1vh",
-    // "background-color": "white"
+    "background-color": "white"
   });
   $(e).text(type);
 }
@@ -69,8 +69,8 @@ export function CheckMate(type, color, tier) {
     "border-radius": "50%",
     outline: color == "b" ? "2vh #171716 solid" : "2vh #d1d1d1 solid",
     "outline-offset": "-1vh",
-    opacity: 1
-    // "background-color": "white"
+    opacity: 1,
+    "background-color": "white"
   });
   $('#r-0').css({
     opacity: 1
@@ -88,6 +88,8 @@ export function CheckMate(type, color, tier) {
   }
 
   $('#r-2').text(type);
+
+  $('#result').css({'z-index':3})
 }
 
 
@@ -99,7 +101,7 @@ export function Remove_Pieces(e, type = '*', color = "white") {
     "border-radius": "10%",
     "outline": "0px #999999 solid",
     "outline-offset": "0px",
-    // "background-color": "#ffcf9e"
+    "background-color": ""
   });
   $(e).text(type);
 }
@@ -119,9 +121,10 @@ export function Reset_Sections(e = ["#board label", ".tier", ".stockpile", ".cap
   });
   $("#War").fadeOut();
   if($('#r-2').css('opacity')==1){
-    $('#r-0').css({'opacity':.6})
+    $('#r-0').css({'opacity':.6, "background-color": "transparent"})
     $('#r-2').css({'opacity':.6})
     $('#r-4').css({'opacity':.6})
+    $('#result').css({'z-index':1})
   }
   // WAR = null;
 }
