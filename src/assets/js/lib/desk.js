@@ -450,7 +450,7 @@ export default class Desk {
 
   in_checkmate = (board = this.board) => {
     let check = this.in_check(board)
-    return ((check['w'] || check['b'])&& this.in_stalemate(board)) || (gungi.turn == 'w' && check['b'])
+    return ((check['w'] || check['b'])&& this.in_stalemate(board)) || (this.phase=='game' && this.turn == 'w' && check['b'])
   }
 
   in_stalemate = (board = this.board) => {
@@ -526,7 +526,7 @@ export default class Desk {
         this.board_1D.push(move.piece)
         // ------------------------------------------------------------
         this.board_temp = this.D1_to_3d()
-        legal.push(!this.in_check(this.board_temp)[move.piece.color])
+        legal.push(!this.in_check(this.board_temp)[move.piece.color] || this.phase=='draft')
         // ------------------------------------------------------------
         move.piece.src = null
         move.piece.tier = 0

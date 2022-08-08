@@ -44,6 +44,7 @@ $(".stockpile").click(function () {
 
   if (gungi.in_check()['b'] || gungi.in_check()['w']) {
     Check(gungi.in_check()['b'] ? 'b' : 'w');
+    Check(gungi.in_check()['w'] ? 'w' : 'b');
   }
 });
 
@@ -59,6 +60,7 @@ $(".tier").click(function () {
 
   if (gungi.in_check()['b'] || gungi.in_check()['w']) {
     Check(gungi.in_check()['b'] ? 'b' : 'w');
+    Check(gungi.in_check()['w'] ? 'w' : 'b');
   }
 
 });
@@ -67,6 +69,7 @@ $("#ReadyButton button").click(function () {
   Reset_Sections();
   if (gungi.in_check()['b'] || gungi.in_check()['w']) {
     Check(gungi.in_check()['b'] ? 'b' : 'w');
+    Check(gungi.in_check()['w'] ? 'w' : 'b');
   }
 
   gungi.move({
@@ -209,6 +212,7 @@ $('#board label').mousedown(function (event) {
   }
   if (gungi.in_check()['b'] || gungi.in_check()['w']) {
     Check(gungi.in_check()['b'] ? 'b' : 'w');
+    Check(gungi.in_check()['w'] ? 'w' : 'b');
   }
   // console.log(gungi.state)
   // console.log(gungi.in_check())

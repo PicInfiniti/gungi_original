@@ -223,6 +223,16 @@ export function Check(color) {
   }); // change color of current box
 }
 
+export function CheckMate(color) {
+  let piece = gungi.marshals[color]
+  $('#b-' + piece.src).css({
+    "border": ".2vh solid red",
+    "box-shadow": "0px 0px 1vh .3vh red",
+    "color": "red"
+  }); // change color of current box
+}
+
+
 export function Show_Moves(gungi, tag, click_pos) {
   let Moves = gungi.moves(gungi.get_top(tag))
   if (Moves.length > 0) {
