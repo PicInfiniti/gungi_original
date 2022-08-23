@@ -76,8 +76,8 @@ a
       font-size: min(5vh, 5vw)
       font-weight: bold
       color: transparent
-      box-shadow: 0px 0px 1vh .2vh #999999
-      border: .2vh solid #999999
+      box-shadow: 0px 0px min(1vh,1vw) min(.2vh,.2vw) #999999
+      border: min(.2vh,.2vw) solid #999999
       border-radius: 10%
 
   #board
@@ -96,15 +96,15 @@ a
       aspect-ratio: 1
       width: min(8vh, 8vw)
       height: min(8vh, 8vw) 
-      font-size: 5vh
+      font-size: min(5vh,5vw)
       font-weight: bold
       color: transparent
-      border: .2vh solid transparent
+      border: min(.2vh,.2vw) solid transparent
       
       border-radius: 10%
       &:hover
-        border: .2vh solid green
-        box-shadow: 0px 0px 1vh .5vh green
+        border: min(.2vh,.2vw) solid green
+        box-shadow: 0px 0px min(1vh,1vw) min(.5vh, .5vw) green
   
   #result
     grid-column: 1
@@ -151,8 +151,8 @@ a
       line-height: min(7vh, 7vw)
       font-size: calc(4 * min(5vh, 5vw))
       font-weight: bold
-      box-shadow: 0px 0px 5vh 1vh #fc9803
-      border: .2vh solid #999999
+      box-shadow: 0px 0px min(5vh,5vw) min(1vh, 1vw) #fc9803
+      border: min(.2vh, .2vw)solid #999999
       opacity: 0
 
     #r-4
@@ -174,20 +174,20 @@ a
   padding-top: 0
   grid-column: 6
   grid-row: 1
-  margin-top: -5vh
+  margin-top: max(-5vh,-5vw)
   #status
     h3
-      padding-left: 1vw
-      margin-top: 1vh
+      padding-left: max(1vh,1vw)
+      margin-top: min(1vh,1vw)
       
     .status
       display: flex
       justify-content: center
-      margin-top: -4.5vh
+      margin-top: max(-4.5vh,-4.5vw)
       margin-bottom: 0vh
     
       button
-        margin: 2vw
+        margin: max(2vh,2vw)
         background-color: transparent
         color: green
         border: min(.3vh, .3vw) solid green
@@ -424,15 +424,40 @@ a
     div:first-child
       padding-bottom: min(1vh, 1vw)
 
-    .buttonBox
-      float: right
+  .buttonBox
+    display: flex
+    float: right
 
-      button
-        background-color: transparent
-        color: green
-        border: min(.2vh, .2vw) solid green
-        border-radius: min(1vh, 1vw)
-        font-size: min(3vh, 3vw)
+    button, label
+      display: flex
+      justify-content: center
+      align-items: center
+      margin-right: 2vw
+      background-color: transparent
+      font-size: min(3vh, 3vw)
+      width: 10vw
+      height: min(5vh, 5vw)
+      
+
+    #save
+      color: green
+      border: min(.3vh, .3vw) solid green
+      border-radius: min(1vh, 1vw)
+
+      &:hover
+        background-color: green
+        color: white
+        cursor: pointer
+
+    #load
+      color: purple
+      border: min(.3vh, .3vw) solid purple
+      border-radius: min(1vh, 1vw)
+
+      &:hover
+        background-color: purple
+        color: white
+        cursor: pointer
 
 
 

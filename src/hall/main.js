@@ -14,7 +14,9 @@ $(document).bind("contextmenu", function (_) {
 });
 
 $('.massage input').keypress(function (event) {
+  
   if (event.which == 13 && event.target.value.length > 0 && $('.status h3').text()!='') {
+    socket.chat({name: $('.status h3').text(), massage: event.target.value})
     $('.chat ul').append(`
     <li>
       <span name="player">${$('.status h3').text()}: </span>
@@ -30,7 +32,7 @@ $('.massage input').keypress(function (event) {
 
     $('.massage input').val('')
 
-
+    
   }
 
 });

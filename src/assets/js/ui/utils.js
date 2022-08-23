@@ -56,8 +56,8 @@ export function Put_Pieces(e, type, color, tier) {
   $(e).css({
     "color": tier_color[tier - 1],
     "border-radius": "50%",
-    "outline": color == "b" ? "1.5vh #171716 solid" : "1.5vh #d1d1d1 solid",
-    "outline-offset": "-1vh",
+    "outline": color == "b" ? "min(1.5vh,1.5vw) #171716 solid" : "min(1.5vh,1.5vw) #d1d1d1 solid",
+    "outline-offset": "max(-1vh,-1vw)",
     "background-color": "white"
   });
   $(e).text(type);
@@ -67,8 +67,8 @@ export function CheckMate(type, color, tier) {
   $('#r-2').css({
     color: tier_color[tier - 1],
     "border-radius": "50%",
-    outline: color == "b" ? "2vh #171716 solid" : "2vh #d1d1d1 solid",
-    "outline-offset": "-1vh",
+    outline: color == "b" ? "min(2vh,2vw) #171716 solid" : "min(2vh,2vw) #d1d1d1 solid",
+    "outline-offset": "max(-1vh,-1vw)",
     opacity: 1,
     "background-color": "white"
   });
@@ -132,7 +132,7 @@ export function Reset_Sections(e = ["#board label", ".tier", ".stockpile", ".cap
 export function Select_Square(e, color) {
   $(e).css({
     border: ".2vh solid " + color,
-    "box-shadow": "0px 0px 1vh .2vh " + color,
+    "box-shadow": "0px 0px min(1vh,1vw) min(.2vh,.2vw) " + color,
   }); // change color of current box
 }
 
@@ -254,8 +254,8 @@ export function saveText(text, filename) {
 export function Check(color) {
   let piece = gungi.marshals[color]
   $('#b-' + piece.src).css({
-    "border": ".2vh solid red",
-    "box-shadow": "0px 0px 1vh .3vh red",
+    "border": "min(.2vh,.2vw) solid red",
+    "box-shadow": "0px 0px min(1vh,1vw) min(.3vh,.3vw) red",
     "color": "red"
   }); // change color of current box
 }
@@ -268,13 +268,13 @@ export function Show_Moves(gungi, tag, click_pos) {
     $.each(Moves, function (_, item) {
       if (item.type == 'move') {
         $('#b-' + item.dst).css({
-          "border": ".2vh solid #009699",
-          "box-shadow": "0px 0px 1vh .2vh #009699",
+          "border": "min(.2vh,.2vw)solid #009699",
+          "box-shadow": "0px 0px min(1vh,1vw) min(.2vh,.2vw) #009699",
         });
       } else {
         $('#b-' + item.dst).css({
-          "border": ".2vh solid red",
-          "box-shadow": "0px 0px 1vh .3vh red"
+          "border": "min(.2vh,.2vw) solid red",
+          "box-shadow": "0px 0px min(1vh,1vw) min(.2vh,.2vw) red"
         });
       }
 
@@ -286,6 +286,7 @@ export function load_history(history) {
   var interval = 500;
   history.forEach(function (el, index) {
     setTimeout(function () {
+      let res, piece;
       switch (el.move.type) {
         case 'place':
           piece = el.move.piece

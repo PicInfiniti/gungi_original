@@ -12,7 +12,9 @@ import {
   update_tier,
   turn_update,
   Check,
-  CheckMate
+  CheckMate,
+  saveText,
+  load_history
 } from './utils'
 
 import {
@@ -168,13 +170,11 @@ $("#jsonfile").change((event) => {
   var reader = new FileReader();
   reader.onload = onReaderLoad;
   reader.readAsText(event.target.files[0]);
-
 });
 
 // ---------------------------------------
 
 $('#board label').mousedown(function (event) {
-  console.log(gungi.in_checkmate())
   Reset_Sections();
   if (!gungi.in_checkmate()) {
     switch (event.which) {
