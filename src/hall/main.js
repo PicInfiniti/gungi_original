@@ -16,13 +16,6 @@ $(document).bind("contextmenu", function (_) {
 });
 
 
-setInterval(socket.players, 2000)
-
-
-
-
-
-
 export class fakeAccount {
   constructor() {
     this.getId = makeid(21)
@@ -34,41 +27,7 @@ export class fakeAccount {
   }
 }
 
-// $('.g-signin2').on('data-onsuccess', function (googleUser) {
-//   // Useful data for your client-side scripts:
-//   var profile = googleUser.getBasicProfile();
 
-//   profile = {
-//     id: profile.getId(),
-//     fullName: profile.getName(),
-//     givenName: profile.getGivenName(),
-//     familyName: profile.getFamilyName(),
-//     imageUrl: profile.getImageUrl(),
-//     email: profile.getEmail(),
-//   }
-
-//   socket.login(profile)
-// });
-
-var peer = new Peer();
-peer.on('open', function(id) {
-  profile['idPeer'] = id
-  console.log(id)
-});
-
-peer.on('connection', function(conn) {
-  conn.on('data', function(data){
-    console.log(data)
-    $('.chat ul').append(`
-    <li>
-      <span name="player">${$('.status h3').text()}: </span>
-      <span>
-        ${data}
-      </span>
-    </li>
-    `)
-  });
-});
 
 var profile = new fakeAccount();
 profile = {
@@ -80,12 +39,108 @@ profile = {
   email: profile.getEmail,
 }
 
+$('.g-signin2').on('data-onsuccess', function (googleUser) {
+  // Useful data for your client-side scripts:
+  var profile = googleUser.getBasicProfile();
 
+  profile = {
+    id: profile.getId(),
+    fullName: profile.getName(),
+    givenName: profile.getGivenName(),
+    familyName: profile.getFamilyName(),
+    imageUrl: profile.getImageUrl(),
+    email: profile.getEmail(),
+  }
 
-$('.g-signin2').click(function (googleUser) {
-  socket.main = profile
-  socket.login(profile)
+  if(!socket.main){
+    socket.peer = new Peer(profile.id);
+    socket.peer.on('open', function (id) {
+      console.log(socket.peer.id)
+      for (let player in socket.users) {
+        console.log(player)
+        let conn = socket.peer.connect(player);
+        conn.on('open', function () {
+          conn.send({
+            status: 'login',
+            profile: socket.main
+          });
+        });
+      }
+    });
+    socket.peer.on('connection', function (conn) {
+      conn.on('data', function (data) {
+        console.log(data)
+        if (data.status == 'message') {
+          $('.chat ul').append(`
+        <li>
+          <span name="player">${data.player}: </span>
+          <span>
+            ${data.message}
+          </span>
+        </li>
+        `)
+        } else if (data.status == 'login') {
+          $('.players').append(`
+          <div id=${conn.id}  desc="player">
+            <img src=${data.profile.imageUrl} alt="">
+            <h3>${data.profile.givenName}</h3>
+          </div>
+        `)
+          socket.users[data.profile.id] = data.profile
+        }
+      });
+    });
+    socket.main = profile
+    socket.login(profile)
+  }
 });
+
+
+// $('.g-signin2').click(function (googleUser) {
+//   if(!socket.main){
+//     socket.peer = new Peer(profile.id);
+//     socket.peer.on('open', function (id) {
+//       console.log(socket.peer.id)
+//       for (let player in socket.users) {
+//         console.log(player)
+//         let conn = socket.peer.connect(player);
+//         conn.on('open', function () {
+//           conn.send({
+//             status: 'login',
+//             profile: socket.main
+//           });
+//         });
+//       }
+//     });
+//     socket.peer.on('connection', function (conn) {
+//       conn.on('data', function (data) {
+//         console.log(data)
+//         if (data.status == 'message') {
+//           $('.chat ul').append(`
+//         <li>
+//           <span name="player">${data.player}: </span>
+//           <span>
+//             ${data.message}
+//           </span>
+//         </li>
+//         `)
+//         } else if (data.status == 'login') {
+//           $('.players').append(`
+//           <div id=${conn.id}  desc="player">
+//             <img src=${data.profile.imageUrl} alt="">
+//             <h3>${data.profile.givenName}</h3>
+//           </div>
+//         `)
+//           socket.users[data.profile.id] = data.profile
+//         }
+//       });
+//     });
+//     socket.main = profile
+//     socket.login(profile)
+//   }
+// });
+
+
 
 function makeid(length) {
   var result = '';
@@ -99,24 +154,15 @@ function makeid(length) {
 }
 
 
-// var conn = peer.connect('another-peers-id');
-// // on open will be launch when you successfully connect to PeerServer
-// conn.on('open', function(){
-//   // here you have conn.id
-//   conn.send('hi!');
-// });
-
-
 $('.massage input').keypress(function (event) {
-  
   if (event.which == 13 && event.target.value.length > 0 && $('.status h3').text() != '') {
-    let conn = peer.connect(socket.activeUser);
-
+    let message = event.target.value
+    $('.massage input').val('')
     $('.chat ul').append(`
     <li>
       <span name="player">${$('.status h3').text()}: </span>
       <span>
-        ${event.target.value}
+        ${message}
       </span>
     </li>
     `)
@@ -125,12 +171,15 @@ $('.massage input').keypress(function (event) {
       scrollTop: $(".chat").height()
     }, 300);
     // on open will be launch when you successfully connect to PeerServer
-
-    conn.on('open', function(){
-      conn.send(event.target.value);
-      $('.massage input').val('')
-    });
+    for (let player in socket.users) {
+      let conn = socket.peer.connect(player);
+      conn.on('open', function () {
+        conn.send({
+          status: 'message',
+          player: socket.main.givenName,
+          message: message
+        });
+      });
+    }
   }
 });
-
-

@@ -1,11 +1,13 @@
 // libraries +++++++++++++++++++++++++++++++++++++
 import $ from "jquery"
 export var socket = {}
-var BaseUrl = 'http://gungi.pythonanywhere.com/'
+// var BaseUrl = 'http://127.0.0.1:5000'
+var BaseUrl = 'https://gungi.pythonanywhere.com'
 
-socket.users = []
+socket.users = {}
 socket.main = null
 socket.activeUser = null
+socket.peer = null
 
 
 socket.login = function (json) {
@@ -22,54 +24,17 @@ socket.login = function (json) {
         <img src=${json['imageUrl']} alt="">
         <h3>${json['givenName']}</h3>
       `)
-      // for(let player in data['players']){
-      //   if(player!=json['id']){
-      //     $('.players').append(      `
-      //     <div id=${player}>
-      //       <img src=${data['players'][player]['imageUrl']} alt="">
-      //       <h3>${data['players'][player]['givenName']}</h3>
-      //     </div>
-      //   `)
-      //   }
-      // }
-
-      for(let massage of data['chatList']){
-        $('.chat ul').append(`
-        <li>
-          <span name="player">${massage['name']}: </span>
-          <span>
-            ${massage['massage']}
-          </span>
-        </li>
-        `)
-      }
-    },
-    error: function (errMsg) {
-      console.log(errMsg);
-    }
-  });
-}
-
-socket.players = function () {
-  $.ajax({
-    type: "GET",
-    url: `${BaseUrl}/players`,
-    // The key needs to match your method's input parameter (case-sensitive).
-    contentType: "application/json; charset=utf-8",
-    dataType: "json",
-    success: function (data) {
       for(let player in data['players']){
-        if(!socket.users.includes(player) && (!socket.main || socket.main.id!=player)){
+        if(!(player in socket.users) && (!socket.main || socket.main.id!=player)){
           $('.players').append(      `
           <div id=${player}  desc="player">
             <img src=${data['players'][player]['imageUrl']} alt="">
             <h3>${data['players'][player]['givenName']}</h3>
           </div>
         `)
-        socket.users.push(player)
+        socket.users[player] = data['players'][player]
         $(`#${player}`).click((event)=>{
-          socket.activeUser = data['players'][event.delegateTarget.getAttribute('id')]['idPeer']
-          console.log(socket.activeUser)
+          socket.activeUser = player
         })
         }
       }
@@ -79,6 +44,36 @@ socket.players = function () {
     }
   });
 }
+
+// socket.players = function () {
+//   $.ajax({
+//     type: "GET",
+//     url: `${BaseUrl}/players`,
+//     // The key needs to match your method's input parameter (case-sensitive).
+//     contentType: "application/json; charset=utf-8",
+//     dataType: "json",
+//     success: function (data) {
+//       for(let player in data['players']){
+//         if(!socket.users.includes(player) && (!socket.main || socket.main.id!=player)){
+//           $('.players').append(      `
+//           <div id=${player}  desc="player">
+//             <img src=${data['players'][player]['imageUrl']} alt="">
+//             <h3>${data['players'][player]['givenName']}</h3>
+//           </div>
+//         `)
+//         socket.users.push(player)
+//         $(`#${player}`).click((event)=>{
+//           socket.activeUser = data['players'][event.delegateTarget.getAttribute('id')]['idPeer']
+//           console.log(socket.activeUser)
+//         })
+//         }
+//       }
+//     },
+//     error: function (errMsg) {
+//       console.log(errMsg);
+//     }
+//   });
+// }
 
 socket.chat = function (json) {
   $.ajax({
