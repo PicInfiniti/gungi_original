@@ -67,8 +67,10 @@ socket.login = function (json) {
                 </span>
               </li>
               `)
+            $(".chat").animate({
+              scrollTop: $(".chat").height()
+            }, 300);
           } else if (data.status == 'login') {
-            console.log(data.profile.id)
             $('.players').append(`
                 <div id=${data.profile.id}  desc="player">
                   <img src=${data.profile.imageUrl} alt="">
