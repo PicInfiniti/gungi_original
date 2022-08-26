@@ -1,13 +1,16 @@
 // libraries +++++++++++++++++++++++++++++++++++++
 import $ from "jquery"
+import './peer'
+
 export var socket = {}
-// var BaseUrl = 'http://127.0.0.1:5000'
-var BaseUrl = 'https://gungi.pythonanywhere.com'
+var BaseUrl = 'http://192.168.1.11:5555'
+// var BaseUrl = 'https://gungi.pythonanywhere.com'
 
 socket.users = {}
-socket.main = null
-socket.activeUser = null
+socket.profile = null
 socket.peer = null
+socket.activeUser = null
+socket.peers = {}
 
 
 socket.login = function (json) {
@@ -19,76 +22,74 @@ socket.login = function (json) {
     contentType: "application/json; charset=utf-8",
     dataType: "json",
     success: function (data) {
+      // remove login button ++++++++++++++++++++++++++++++++++
       $('.g-signin2').remove()
       $('.status').append(`
-        <img src=${json['imageUrl']} alt="">
-        <h3>${json['givenName']}</h3>
+        <img src=${json.imageUrl} alt="">
+        <h3>${json.givenName}</h3>
       `)
-      for(let player in data['players']){
-        if(!(player in socket.users) && (!socket.main || socket.main.id!=player)){
-          $('.players').append(      `
-          <div id=${player}  desc="player">
-            <img src=${data['players'][player]['imageUrl']} alt="">
-            <h3>${data['players'][player]['givenName']}</h3>
-          </div>
-        `)
-        socket.users[player] = data['players'][player]
-        $(`#${player}`).click((event)=>{
-          socket.activeUser = player
-        })
+
+      // ------------------------------------------------------
+
+      socket.peer = new Peer(json.id) // make main peer
+      socket.peer.on('open', function (id) {
+        console.log(`Peer is Created: ${id}`)
+        for (let player in data['players']) {
+          if (!(player in socket.users) && (!socket.profile || socket.profile.id != player)) {
+            $('.players').append(`
+            <div id=${player}  desc="player">
+              <img src=${data['players'][player]['imageUrl']} alt="">
+              <h3>${data['players'][player]['givenName']}</h3>
+            </div>
+          `)
+            socket.users[player] = data.players[player]
+            socket.peers[player] = socket.peer.connect(player);
+            socket.peers[player].on('open', function () {
+              console.log(data.players[player].id)
+              socket.peers[player].send({
+                status: 'login',
+                profile: socket.profile
+              })
+            })
+          }
         }
-      }
+      })
+
+
+      socket.peer.on('connection', function (conn) {
+        conn.on('data', function (data) {
+          if (data.status == 'message') {
+            $('.chat ul').append(`
+              <li>
+                <span name="player">${data.player}: </span>
+                <span>
+                  ${data.message}
+                </span>
+              </li>
+              `)
+          } else if (data.status == 'login') {
+            console.log(data.profile.id)
+            $('.players').append(`
+                <div id=${data.profile.id}  desc="player">
+                  <img src=${data.profile.imageUrl} alt="">
+                  <h3>${data.profile.givenName}</h3>
+                </div>
+              `)
+            socket.users[data.profile.id] = data.profile
+            socket.peers[data.profile.id] = socket.peer.connect(data.profile.id);
+          }
+        });
+      });
+
+      // keep connection alive
+      setInterval(() => {
+        socket.peer.socket.send({
+          type: 'ping'
+        })
+      }, 16000)
     },
     error: function (errMsg) {
       console.log(errMsg);
     }
   });
 }
-
-// socket.players = function () {
-//   $.ajax({
-//     type: "GET",
-//     url: `${BaseUrl}/players`,
-//     // The key needs to match your method's input parameter (case-sensitive).
-//     contentType: "application/json; charset=utf-8",
-//     dataType: "json",
-//     success: function (data) {
-//       for(let player in data['players']){
-//         if(!socket.users.includes(player) && (!socket.main || socket.main.id!=player)){
-//           $('.players').append(      `
-//           <div id=${player}  desc="player">
-//             <img src=${data['players'][player]['imageUrl']} alt="">
-//             <h3>${data['players'][player]['givenName']}</h3>
-//           </div>
-//         `)
-//         socket.users.push(player)
-//         $(`#${player}`).click((event)=>{
-//           socket.activeUser = data['players'][event.delegateTarget.getAttribute('id')]['idPeer']
-//           console.log(socket.activeUser)
-//         })
-//         }
-//       }
-//     },
-//     error: function (errMsg) {
-//       console.log(errMsg);
-//     }
-//   });
-// }
-
-socket.chat = function (json) {
-  $.ajax({
-    type: "POST",
-    url: `${BaseUrl}/chat`,
-    // The key needs to match your method's input parameter (case-sensitive).
-    data: JSON.stringify(json),
-    contentType: "application/json; charset=utf-8",
-    dataType: "json",
-    success: function (data) {
-      console.log(data);
-    },
-    error: function (errMsg) {
-      console.log(errMsg);
-    }
-  });
-}
-
