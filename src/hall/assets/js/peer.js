@@ -4221,7 +4221,7 @@
             qe.default.log("Received leave message from ".concat(o)), this._cleanupPeer(o), this._connections.delete(o);
             break;
           case ot.Expire:
-            this.emitError(rt.PeerUnavailable, "Could not connect to peer ".concat(o));
+            this.emitError(rt.PeerUnavailable, "Could not connect to peer ".concat(o), o);
             break;
           case ot.Offer:
             var a = i.connectionId;
@@ -4321,9 +4321,12 @@
         }), 0)
       }, t.prototype._abort = function (e, t) {
         qe.default.error("Aborting!"), this.emitError(e, t), this._lastServerId ? this.disconnect() : this.destroy()
-      }, t.prototype.emitError = function (e, t) {
+      }, t.prototype.emitError = function (e, t, o='_') {
         var r;
-        qe.default.error("Error:", t), (r = "string" == typeof t ? new Error(t) : t).type = e, this.emit("error", r)
+        let ERROR = (r = "string" == typeof t ? new Error(t) : t);
+        ERROR.type = e
+        ERROR.id = o
+        qe.default.error("Error:", t), ERROR, this.emit("error", r)
       }, t.prototype.destroy = function () {
         this.destroyed || (qe.default.log("Destroy peer with ID:".concat(this.id)), this.disconnect(), this._cleanup(), this._destroyed = !0, this.emit("close"))
       }, t.prototype._cleanup = function () {

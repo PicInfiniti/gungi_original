@@ -20,7 +20,7 @@ $(document).bind("contextmenu", function (_) {
 
 
 var profile = new fakeAccount();
-profile = {
+socket.profile = {
   id: profile.getId,
   fullName: profile.getName,
   givenName: profile.getGivenName,

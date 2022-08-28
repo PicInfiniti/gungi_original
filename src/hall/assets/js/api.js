@@ -142,19 +142,88 @@ chooseId()
 
 
 
-function chooseId(){
+function chooseId() {
   console.log(`${socket.index}/${socket.ids.length}`)
   socket.peer = new Peer(socket.ids[socket.index])
   socket.peer.on('open', function (id) {
-    console.log(`Peer Id: ${id}`)
+    console.log(`Peer Id: ${socket.peer.id}`)
+    $('.g-signin2').remove()
+    $('.status').append(`
+        <img src=${socket.profile.imageUrl} alt="">
+        <h3>${socket.profile.givenName}</h3>
+      `)
+
+    UserCall()
   })
-  socket.peer.on('error', function (err) {
-    socket.index++;
-    if(socket.index>socket.ids.length){
-      alert(`Room is Full...`)
-    } else {
-      chooseId()
+
+  socket.peer.on('error', function (err, id) {
+    if (err.type == 'unavailable-id') {
+      socket.index++;
+      if (socket.index > socket.ids.length) {
+        alert(`Room is Full...`)
+      } else {
+        chooseId()
+      }
+    } else if (err.type == 'peer-unavailable') {
+      socket.peers[err.id] = null
     }
-    
   })
+
+  socket.peer.on('connection', function (conn) {
+    conn.on('data', function (data) {
+      if (data.status == 'message') {
+        $('.chat ul').append(`
+          <li>
+            <span name="player">${data.player}: </span>
+            <span>
+              ${data.message}
+            </span>
+          </li>
+          `)
+        $(".chat").animate({
+          scrollTop: $(".chat").height()
+        }, 300);
+
+      } else if (data.status == 'login') {
+        $('.players').append(`
+            <div id=${data.profile.id}  desc="player">
+              <img src=${data.profile.imageUrl} alt="">
+              <h3>${data.profile.givenName}</h3>
+            </div>
+          `)
+        socket.users[data.profile.id] = data.profile
+        socket.peers[data.profile.id] = socket.peer.connect(data.profile.id, {
+          reliable: true
+        });
+
+        socket.peers[data.profile.id].on('close', function () {
+          console.log(socket.peers[data.profile.id].open)
+          socket.peers[data.profile.id].send({
+            status: 'logout',
+            profile: socket.profile
+          })
+        })
+      }
+    });
+  });
+}
+
+
+function UserCall() {
+  for (let player of socket.ids) {
+    if (player != socket.peer.id) {
+      socket.peers[player] = socket.peer.connect(player, {
+        reliable: true
+      });
+
+      socket.peers[player].on('open', function () {
+        socket.peers[player].send({
+          status: 'login',
+          profile: socket.profile
+        })
+      })
+
+    }
+  }
+
 }
