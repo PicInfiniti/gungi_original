@@ -21,7 +21,6 @@ $(document).bind("contextmenu", function (_) {
 
 var profile = new fakeAccount();
 socket.profile = {
-  id: profile.getId,
   fullName: profile.getName,
   givenName: profile.getGivenName,
   familyName: profile.getFamilyName,
@@ -112,11 +111,13 @@ $('.massage input').keypress(function (event) {
     }, 300);
     // on open will be launch when you successfully connect to PeerServer
     for (let conn in socket.peers) {
-      socket.peers[conn].send({
-        status: 'message',
-        player: socket.profile.givenName,
-        message: message
-      });
+      if(socket.peers[conn]){
+        socket.peers[conn].send({
+          status: 'message',
+          player: socket.profile.givenName,
+          message: message
+        });
+      }
     }
   }
 });
