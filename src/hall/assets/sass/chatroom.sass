@@ -2,11 +2,7 @@
   font-family: kanji
   src: url(/assets/font/kanji.ttf)
 
-*
-  padding: 0
-  margin: 0
-  box-sizing: border-box
-
+  
 body 
   padding: 0
   margin: 0
@@ -17,16 +13,21 @@ body
   -moz-user-select: none
   -ms-user-select: none
   user-select: none
-
-
-.container
+  
+.chatroom
   padding: min(2vh, 2vw)
   width: 100vw
   height: 100vh
-  display: grid
+  display: none
   grid-template-columns: repeat(5, 1fr)
   grid-template-rows: repeat(10, 1fr)
   grid-gap: min(2vh, 2vw)
+  box-sizing: border-box
+
+  *
+    padding: 0
+    margin: 0
+    box-sizing: border-box
 
   .status
     grid-column: 1
@@ -124,16 +125,16 @@ body
         outline: none
 
   .footer
-    grid-column: 1 / 6
-    grid-row: 10
+      grid-column: 1 / 6
+      grid-row: 10
 
-    border: .2vh solid #999999
-    padding: min(1.5vh, 1.5vw)
+      border: .2vh solid #999999
+      padding: min(1.5vh, 1.5vw)
 
-    display: flex
-    justify-content: center
-    align-items: center
+      display: flex
+      justify-content: center
+      align-items: center
 
-    p, a
-      padding: 0
-      border: 0vh solid #999999
+      p, a
+        padding: 0
+        border: 0vh solid #999999

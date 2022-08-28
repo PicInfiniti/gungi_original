@@ -2,17 +2,18 @@
 import $ from "jquery"
 import Filter from 'bad-words'
 
-import './assets/js/peer'
+import './assets/js/chat/peer'
 import {
   socket
-} from "./assets/js/api"
+} from "./assets/js/chat/api"
 import {
   fakeAccount
-} from "./assets/js/utils"
+} from "./assets/js/chat/utils"
 // libraries -------------------------------------
 
 // style and util +++++++++++++++++++++++++
-import "./assets/sass/about.sass"
+import "./assets/sass/chatroom.sass"
+import "./assets/sass/land.sass"
 // ----------------------------------------
 
 $(document).bind("contextmenu", function (_) {
@@ -89,8 +90,7 @@ socket.profile = {
 
 $('.g-signin2').click(function (googleUser) {
   if (!socket.profile) {
-    socket.profile = profile
-    socket.login(profile)
+    chooseId()
   }
 });
 
@@ -125,3 +125,36 @@ $('.massage input').keypress(function (event) {
 });
 
 
+
+
+// setup +++++++++++++++++++++++++++++++++++++++++
+document.addEventListener('contextmenu', event => event.preventDefault());
+
+function capitalizeFirstLetter(string) {
+  let temp = string.charAt(0).toUpperCase() + string.slice(1)
+  return temp.replace('_', ' ');
+}
+
+$('.stockpile').hover((event) => {
+    let color = $(event.target).attr('id')[0]
+    if(color=='b') {
+      $('#b-army .tooltip').show()
+      .text(capitalizeFirstLetter(event.target.getAttribute('dcr')))
+    } else {
+      $('#w-army .tooltip').show()
+      .text(capitalizeFirstLetter(event.target.getAttribute('dcr')))
+    }
+
+  },
+  (event) => {
+    $('.tooltip').hide()
+      .text('Marshal')
+  })
+  
+// setup -----------------------------------------
+
+// Ui ++++++++++++++++++++++++++++++++++++++
+import './assets/js/gungi/ui/setup'
+import './assets/js/gungi/ui/Interactions'
+
+// Ui -------------------------------------------

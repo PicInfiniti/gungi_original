@@ -35,7 +35,7 @@ socket.index = 0
 socket.peers = {}
 
 
-chooseId()
+// chooseId()
 
 function chooseId() {
   console.log(`${socket.index}/${socket.ids.length}`)
