@@ -14,6 +14,7 @@
     "vite": "^3.0.0"
   },
   "dependencies": {
+    "bad-words": "^3.0.4",
     "jquery": "^3.6.0"
   }
 }

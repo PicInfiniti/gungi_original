@@ -1,5 +1,6 @@
 // libraries +++++++++++++++++++++++++++++++++++++
 import $ from "jquery"
+import Filter from 'bad-words'
 
 import './assets/js/peer'
 import {
@@ -18,6 +19,7 @@ $(document).bind("contextmenu", function (_) {
   return false;
 });
 
+var filter = new Filter();
 
 var profile = new fakeAccount();
 socket.profile = {
@@ -101,7 +103,7 @@ $('.massage input').keypress(function (event) {
     <li>
       <span name="player">${$('.status h3').text()}: </span>
       <span>
-        ${message}
+        ${filter.clean(message)}
       </span>
     </li>
     `)
@@ -115,7 +117,7 @@ $('.massage input').keypress(function (event) {
         socket.peers[conn].send({
           status: 'message',
           player: socket.profile.givenName,
-          message: message
+          message: filter.clean(message)
         });
       }
     }
