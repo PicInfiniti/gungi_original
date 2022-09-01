@@ -2,7 +2,8 @@
   font-family: kanji
   src: url(/assets/font/kanji.ttf)
 
-  
+// :root
+//   color-scheme: dark
 body 
   padding: 0
   margin: 0
@@ -18,7 +19,7 @@ body
   padding: min(2vh, 2vw)
   width: 100vw
   height: 100vh
-  display: none
+  display: grid
   grid-template-columns: repeat(5, 1fr)
   grid-template-rows: repeat(10, 1fr)
   grid-gap: min(2vh, 2vw)
@@ -39,10 +40,22 @@ body
     display: flex
     justify-content: center
     align-items: center
+    *
+      margin: 1vh
+
+    h1
+      font-size: min(5vh, 5vw)
+      margin-right: 0
+      z-index: 99
+      color: green
+      &:hover
+        color: black
+        cursor: pointer
+
     img:first-child
       border-radius: 50%
       box-shadow: 0px 0px 2.5vh .5vh #fc9803
-      margin: 2vh
+      
       width: min(12vh, 12vw)
 
     .g-signin2
@@ -91,9 +104,65 @@ body
   .games
     grid-column: 2 / 6
     grid-row: 1 / 5
-
+    overflow: scroll 
     border: .2vh solid #999999
     padding: min(1.5vh, 1.5vw)
+
+    .game
+      border: 1px solid red
+      display: flex
+      gap: 1vw
+      flex-wrap: nowrap
+      justify-content: center
+      align-items: stretch
+      border-radius: min(1vh, 1vw)
+      margin-bottom: 1vh
+      div
+        background-color: #f1f1f1
+        width: 5vw
+        margin: .5vw
+        text-align: center
+        font-size: min(3vh,3vw)
+        display: flex
+        justify-content: center
+        align-items: center
+
+      [name=blackUser]
+        flex-grow: 5
+
+      [name=black]
+        font-family: kanji
+        font-size: min(5vh, 5vw)
+        font-weight: bold
+        color: black
+        border-radius: 50%
+        aspect-ratio: 1
+        outline: min(1vh, 1vw) black solid
+        outline-offset: 0px
+      
+      [name=dash]
+        flex-grow: 1
+        color: black
+
+      [name=white]
+        font-family: kanji
+        font-size: min(5vh, 5vw)
+        font-weight: bold
+        color: black
+        border-radius: 50%
+        outline: min(1vh, 1vw) #d1d1d1 solid
+        outline-offset: 0px
+
+      [name=whiteUser]
+        flex-grow: 5
+        color: green
+        font-weight: bold
+        &:hover
+          background-color: black
+          color: white
+          cursor: pointer
+
+      
 
   .chat
     grid-column: 2 / 6

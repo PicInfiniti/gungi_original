@@ -19,3 +19,8 @@ function makeid(length) {
   }
   return result;
 }
+
+export function capitalizeFirstLetter(string) {
+  let temp = string.charAt(0).toUpperCase() + string.slice(1)
+  return temp.replace('_', ' ');
+}

@@ -6,7 +6,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <link rel="icon" href="favicon.svg" type="image/gif">
-  
+
   <!-- <meta name="google-signin-scope" content="profile email">
   <meta name="google-signin-client_id"
     content="996775336417-hnoenu5bfaeignv3m141dfaopkhe7qo2.apps.googleusercontent.com">
@@ -26,15 +26,8 @@
       <div class="g-signin2" data-onsuccess="onSignIn" data-theme="dark"></div>
     </div>
     <div class="players"></div>
-    <div class="games">
-      <div name="game">
-
-      </div>
-
-    </div>
-    <div class="chat">
-      <ul></ul>
-    </div>
+    <div class="games"></div>
+    <div class="chat"><ul></ul></div>
     <div class="massage">
       <input type="text" placeholder="Type Your Massage..." maxlength="100" autofocus>
     </div>
@@ -50,15 +43,15 @@
     <div class="about">
       <a href="../about/index.html">How to Play</a>
     </div>
-  
+
     <div class="container">
       <div class="arena">
         <div id="fake"></div>
         <div id="board"></div>
         <div id="result"></div>
       </div>
-  
-  
+
+
       <div class="info">
         <div class="boarder-bottom" id="status">
           <h3 id="PHASE">Draft Phase</h3>
@@ -74,7 +67,7 @@
             </span>
           </div>
         </div>
-  
+
         <div class="boarder-bottom" id="tower_details">
           <h3 id="PHASE">Tower Details</h3>
           <div class="tower">
@@ -83,7 +76,7 @@
               <label class="fake boarder" type="text">1</label>
               <label class="fake boarder" type="text">2</label>
             </div>
-  
+
             <div name="board">
               <label class="tier boarder" type="text" id="t-0" name="0">0</label>
               <label class="tier boarder" type="text" id="t-1" name="1">1</label>
@@ -91,7 +84,7 @@
             </div>
           </div>
         </div>
-        
+
         <div class="boarder-bottom" id="black_stockpile">
           <h3>Black Stockpile</h3>
           <span name="pile">
@@ -117,7 +110,7 @@
             <span id='as-b'>0</span>
           </span>
         </div>
-  
+
         <div class="boarder-bottom" id="white_stockpile">
           <h3>White Stockpile</h3>
           <span name="pile">
@@ -143,18 +136,18 @@
             <span id='as-w'>0</span>
           </span>
         </div>
-  
+
         <div id="War">
           <h5 class="card-title row">Which road you Choose?</h5>
           <div name="war">
             <button type="button" id="Attack">Attack</button>
             <button type="button" id="Stack">Stack</button>
           </div>
-  
+
         </div>
-  
+
       </div>
-      
+
       <div id="Captured">
         <div id="black_Captured">
           <h3>Black Captured</h3>
@@ -174,9 +167,9 @@
             <label class="captured boarder" type="text" id="bc-小" name="小">小</label>
           </span>
         </div>
-  
+
         <hr style="width: 95vw; color: rgba(150, 150, 150, 0.548)">
-  
+
         <div id="white_Captured">
           <h3>White Captured</h3>
           <span name="pile">
@@ -195,14 +188,14 @@
             <label class="captured boarder" type="text" id="wc-小" name="小">小</label>
           </span>
         </div>
-        
+
         <div class="buttonBox">
           <label id="save">Save</label>
           <label for="jsonfile" id="load">Load</label>
           <input hidden id="jsonfile" type="file">
         </div>
       </div>
-  
+
     </div>
     <footer class="center">
       <div>

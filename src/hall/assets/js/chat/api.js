@@ -9,6 +9,8 @@ var BaseUrl = 'http://127.0.0.1:5556'
 socket.profile = null
 socket.peer = null
 socket.activeUser = null
+socket.gameCount = 0
+
 socket.ids = [
   "0l8mgdv1N8061pmnJETZf",
   "21d9Rr7dwuZBWe2hZtHpq",
@@ -37,7 +39,7 @@ socket.peers = {}
 
 // chooseId()
 
-function chooseId() {
+export function chooseId() {
   console.log(`${socket.index}/${socket.ids.length}`)
 
   socket.peer = new Peer(socket.ids[socket.index])
@@ -49,8 +51,28 @@ function chooseId() {
     $('.status').append(`
         <img src=${socket.profile.imageUrl} alt="">
         <h3>${socket.profile.givenName}</h3>
+        <h1>▶</h1>
       `)
-      
+    $('.status h1').click((event) => {
+      if(socket.gameCount===0){
+        socket.gameCount = 1
+        $('.games').append(`
+        <div class="game" desc="${socket.profile.id}">
+          <div name="blackUser">${socket.profile.givenName}</div>
+          <div name="black">帥</div>
+          <div name="dash">―</div>
+          <div name="white">帥</div>
+          <div name="whiteUser">Join +</div>
+        </div>
+      `)
+
+      SendAll('game', {
+        black: socket.profile,
+        white: null
+      })
+      }
+    })
+
     setInterval(() => {
       socket.peer.socket.send({
         type: 'ping'
@@ -78,7 +100,7 @@ function chooseId() {
       if (data.status == 'message') {
         $('.chat ul').append(`
           <li>
-            <span name="player">${data.player}: </span>
+            <span name="player">${data.player.givenName}: </span>
             <span>
               ${data.message}
             </span>
@@ -94,7 +116,7 @@ function chooseId() {
           <img src=${data.profile.imageUrl} alt="">
           <h3>${data.profile.givenName}</h3>
         </div>
-      `)
+        `)
 
         socket.peers[data.profile.id] = socket.peer.connect(data.profile.id, {
           reliable: true
@@ -118,6 +140,38 @@ function chooseId() {
           <h3>${data.profile.givenName}</h3>
         </div>
       `)
+      } else if (data.status == 'game') {
+        if(!data.message.white){
+          $('.games').append(`
+          <div class="game" desc="${data.message.black.id}">
+            <div name="blackUser">${data.message.black.givenName}</div>
+            <div name="black">帥</div>
+            <div name="dash">―</div>
+            <div name="white">帥</div>
+            <div name="whiteUser">Join +</div>
+          </div>`)
+          
+          $(`.games [desc=${data.message.black.id}] [name=whiteUser]`).click((event) => {
+            if (socket.gameCount===0) {
+              socket.gameCount = 1
+              $(event.target).text(socket.profile.givenName)
+              SendAll('game', {
+                black: data.message.black,
+                white: socket.profile
+              })
+            }
+          })
+        } else{
+          $(`.games [desc=${data.message.black.id}]`).remove()
+          $('.games').append(`
+          <div class="game" desc="${data.message.black.id}">
+            <div name="blackUser">${data.message.black.givenName}</div>
+            <div name="black">帥</div>
+            <div name="dash">―</div>
+            <div name="white">帥</div>
+            <div name="whiteUser">${data.message.white.givenName}</div>
+          </div>`)
+        }
       }
     });
   });
@@ -142,6 +196,19 @@ function UserCall() {
         $(`#${player}`).remove();
         socket.peers[player] = false;
       })
+    }
+  }
+}
+
+
+export function SendAll(status, message, profile = socket.profile, peers = socket.peers) {
+  for (let conn in peers) {
+    if (peers[conn]) {
+      peers[conn].send({
+        status: status,
+        player: profile,
+        message: message
+      });
     }
   }
 }

@@ -4,11 +4,14 @@ import Filter from 'bad-words'
 
 import './assets/js/chat/peer'
 import {
-  socket
+  socket,
+  chooseId,
+  SendAll
 } from "./assets/js/chat/api"
 import {
-  fakeAccount
-} from "./assets/js/chat/utils"
+  fakeAccount,
+  capitalizeFirstLetter
+} from "./assets/js/utils"
 // libraries -------------------------------------
 
 // style and util +++++++++++++++++++++++++
@@ -16,14 +19,12 @@ import "./assets/sass/chatroom.sass"
 import "./assets/sass/land.sass"
 // ----------------------------------------
 
-$(document).bind("contextmenu", function (_) {
-  return false;
-});
+document.addEventListener('contextmenu', event => event.preventDefault());
 
 var filter = new Filter();
 
 var profile = new fakeAccount();
-socket.profile = {
+profile = {
   fullName: profile.getName,
   givenName: profile.getGivenName,
   familyName: profile.getFamilyName,
@@ -90,6 +91,7 @@ socket.profile = {
 
 $('.g-signin2').click(function (googleUser) {
   if (!socket.profile) {
+    socket.profile = profile
     chooseId()
   }
 });
@@ -101,7 +103,7 @@ $('.massage input').keypress(function (event) {
     $('.massage input').val('')
     $('.chat ul').append(`
     <li>
-      <span name="player">${$('.status h3').text()}: </span>
+      <span name="player">${socket.profile.givenName}: </span>
       <span>
         ${filter.clean(message)}
       </span>
@@ -112,29 +114,12 @@ $('.massage input').keypress(function (event) {
       scrollTop: $(".chat").height()
     }, 300);
     // on open will be launch when you successfully connect to PeerServer
-    for (let conn in socket.peers) {
-      if(socket.peers[conn]){
-        socket.peers[conn].send({
-          status: 'message',
-          player: socket.profile.givenName,
-          message: filter.clean(message)
-        });
-      }
-    }
+    SendAll('message', filter.clean(message))
   }
 });
 
 
-
-
-// setup +++++++++++++++++++++++++++++++++++++++++
-document.addEventListener('contextmenu', event => event.preventDefault());
-
-function capitalizeFirstLetter(string) {
-  let temp = string.charAt(0).toUpperCase() + string.slice(1)
-  return temp.replace('_', ' ');
-}
-
+// setup Land +++++++++++++++++++++++++++++++++++++++++
 $('.stockpile').hover((event) => {
     let color = $(event.target).attr('id')[0]
     if(color=='b') {
