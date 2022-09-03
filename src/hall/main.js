@@ -2,12 +2,12 @@
 import $ from "jquery"
 import Filter from 'bad-words'
 
-import './assets/js/chat/peer'
+import './assets/js/peer'
 import {
   socket,
   chooseId,
   SendAll
-} from "./assets/js/chat/api"
+} from "./assets/js/api"
 import {
   fakeAccount,
   capitalizeFirstLetter
@@ -139,7 +139,7 @@ $('.stockpile').hover((event) => {
 // setup -----------------------------------------
 
 // Ui ++++++++++++++++++++++++++++++++++++++
-import './assets/js/gungi/ui/setup'
-import './assets/js/gungi/ui/Interactions'
+import './assets/js/ui/setup'
+import './assets/js/ui/Interactions'
 
 // Ui -------------------------------------------

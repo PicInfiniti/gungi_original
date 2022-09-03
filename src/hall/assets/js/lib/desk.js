@@ -13,7 +13,9 @@ import {
   Lieutenant,
   Minor_General
 } from '../lib/pieces'
-import { gungi } from '../ui/setup'
+import {
+  gungi
+} from '../ui/setup'
 export default class Desk {
   constructor(constant) {
     // constants +++++++++++++++++++++++++++++++++
@@ -132,11 +134,11 @@ export default class Desk {
       switch (Move.type) {
         case this.PLACE:
           top = this.get_top(Move.dst); // get top piece of destination
-          if (this.count<2 && Move.piece.name!='marshal'){
+          if (this.count < 2 && Move.piece.name != 'marshal') {
             return null;
           }
           if ((!top || (top.tier < 3)) &&
-            this.stockpiles[Move.piece.color][Move.piece.name].length > 0 
+            this.stockpiles[Move.piece.color][Move.piece.name].length > 0
           ) { // if its not empty an less than 3 piece and have possible move there you can place
 
             // add to history -----------------------
@@ -450,7 +452,7 @@ export default class Desk {
 
   in_checkmate = (board = this.board) => {
     let check = this.in_check(board)
-    return ((check['w'] || check['b'])&& this.in_stalemate(board)) || (this.phase=='game' && this.turn == 'w' && check['b'])
+    return ((check['w'] || check['b']) && this.in_stalemate(board)) || (this.phase == 'game' && this.turn == 'w' && check['b'])
   }
 
   in_stalemate = (board = this.board) => {
@@ -526,7 +528,7 @@ export default class Desk {
         this.board_1D.push(move.piece)
         // ------------------------------------------------------------
         this.board_temp = this.D1_to_3d()
-        legal.push(!this.in_check(this.board_temp)[move.piece.color] || this.phase=='draft')
+        legal.push(!this.in_check(this.board_temp)[move.piece.color] || this.phase == 'draft')
         // ------------------------------------------------------------
         move.piece.src = null
         move.piece.tier = 0
@@ -599,7 +601,7 @@ export default class Desk {
   }
 }
 
-function Dict_Compare (d1, d2) {
+function Dict_Compare(d1, d2) {
   for (let i in d1) {
     if (d1[i] != d2[i]) {
       return false

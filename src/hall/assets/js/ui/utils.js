@@ -92,9 +92,6 @@ export function CheckMate(type, color, tier) {
   $('#result').css({'z-index':3})
 }
 
-
-
-
 export function Remove_Pieces(e, type = '*', color = "white") {
   $(e).css({
     "color": '#ffcf9e00',
@@ -322,4 +319,40 @@ export function load_history(history) {
       }
     }, index * interval);
   });
+}
+
+export function Move(message) {
+  let piece;
+  switch (message.type) {
+    case 'place':
+      piece = message.piece
+      piece = gungi.stockpiles[piece.color][piece.name][0]
+      Update_Game({
+        piece: piece,
+        dst: message.dst,
+        type: 'place'
+      });
+
+      break
+
+    case 'ready':
+      Update_Game({
+        piece: null,
+        dst: null,
+        type: 'ready'
+      });
+      if (gungi.phase == 'game') {
+        $('#PHASE').text('Game Phase')
+      }
+
+      break
+
+    default:
+      piece = gungi.get_top(message.piece.src)
+      Update_Game({
+        piece: piece,
+        dst: message.dst,
+        type: message.type
+      });
+  }
 }

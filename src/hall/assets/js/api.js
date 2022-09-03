@@ -2,14 +2,20 @@
 import $ from "jquery"
 import './peer'
 
+import {
+  Move,
+} from './ui/utils'
+
+
 export var socket = {}
-var BaseUrl = 'http://127.0.0.1:5556'
+// var BaseUrl = 'http://127.0.0.1:5556'
 // var BaseUrl = 'https://gungi.pythonanywhere.com'
 
 socket.profile = null
 socket.peer = null
-socket.activeUser = null
+socket.opponent = null
 socket.gameCount = 0
+socket.color = null
 
 socket.ids = [
   "0l8mgdv1N8061pmnJETZf",
@@ -48,14 +54,16 @@ export function chooseId() {
     socket.profile.id = id
     console.log(`Peer Id: ${id}`)
     $('.g-signin2').remove()
-    $('.status').append(`
+    $('.chatroom .status').append(`
         <img src=${socket.profile.imageUrl} alt="">
         <h3>${socket.profile.givenName}</h3>
         <h1>▶</h1>
       `)
-    $('.status h1').click((event) => {
-      if(socket.gameCount===0){
+    $('.chatroom .status h1').click((event) => {
+      if (socket.gameCount === 0) {
         socket.gameCount = 1
+        socket.color = 'b'
+
         $('.games').append(`
         <div class="game" desc="${socket.profile.id}">
           <div name="blackUser">${socket.profile.givenName}</div>
@@ -66,10 +74,10 @@ export function chooseId() {
         </div>
       `)
 
-      SendAll('game', {
-        black: socket.profile,
-        white: null
-      })
+        SendAll('game', {
+          black: socket.profile,
+          white: null
+        })
       }
     })
 
@@ -110,6 +118,7 @@ export function chooseId() {
           scrollTop: $(".chat").height()
         }, 300);
 
+
       } else if (data.status == 'login') {
         $('.players').append(`
         <div id=${data.profile.id}  desc="player">
@@ -133,6 +142,7 @@ export function chooseId() {
           $(`#${data.profile.id}`).remove();
           socket.peers[data.profile.id] = false;
         })
+
       } else if (data.status == 'recall') {
         $('.players').append(`
         <div id=${data.profile.id}  desc="player">
@@ -141,7 +151,7 @@ export function chooseId() {
         </div>
       `)
       } else if (data.status == 'game') {
-        if(!data.message.white){
+        if (!data.message.white) {
           $('.games').append(`
           <div class="game" desc="${data.message.black.id}">
             <div name="blackUser">${data.message.black.givenName}</div>
@@ -150,10 +160,16 @@ export function chooseId() {
             <div name="white">帥</div>
             <div name="whiteUser">Join +</div>
           </div>`)
-          
+
           $(`.games [desc=${data.message.black.id}] [name=whiteUser]`).click((event) => {
-            if (socket.gameCount===0) {
+            if (socket.gameCount === 0) {
               socket.gameCount = 1
+              socket.color = 'w'
+              socket.opponent = socket.peers[data.message.black.id]
+
+              $('.chatroom').hide()
+              $('.land').show()
+
               $(event.target).text(socket.profile.givenName)
               SendAll('game', {
                 black: data.message.black,
@@ -161,7 +177,7 @@ export function chooseId() {
               })
             }
           })
-        } else{
+        } else {
           $(`.games [desc=${data.message.black.id}]`).remove()
           $('.games').append(`
           <div class="game" desc="${data.message.black.id}">
@@ -171,7 +187,18 @@ export function chooseId() {
             <div name="white">帥</div>
             <div name="whiteUser">${data.message.white.givenName}</div>
           </div>`)
+
+          if (data.message.black.id == socket.profile.id) {
+            socket.color = 'b'
+            socket.opponent = socket.peers[data.message.white.id]
+
+            $('.chatroom').hide()
+            $('.land').show()
+          }
         }
+      } else if (data.status == 'move' && socket.opponent && socket.color) {
+        console.log(data.message)
+        Move(data.message)
       }
     });
   });
